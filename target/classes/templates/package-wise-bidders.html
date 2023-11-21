@@ -1,0 +1,238 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" >
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+    <style>
+        body {
+    text-align: justify;
+    text-justify: inter-word;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    padding-top: 22px;
+    width: 1000px;
+    width: auto;
+    margin-right: auto;
+    margin-left: auto;
+    *zoom: 1;
+}
+.container:before,
+.container:after {
+    display: table;
+    line-height: 0;
+    content: "";
+}
+
+.container:after {
+    clear: both;
+}
+
+
+
+
+
+@page {
+    @top-right {
+        content: "Page " counter(page) " of " counter(pages);
+    }
+
+}
+
+div.footer {
+    display: block;
+
+    position: running(footer);
+}
+
+@page {
+   @bottom-left {
+        content:  element(footer);
+    }
+  }
+
+@page {
+    size: landscape;
+}
+  div{page-break-inside:avoid}
+
+<!--  @page {-->
+<!--    size: landscape;-->
+<!--}-->
+
+.padding {
+    padding-right: 20px;
+    width: 34%;
+}
+.paddingRight {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.test{
+align :right ;
+}
+
+
+.about-border {
+    display: block;
+    width: 160px;
+    height: 1px;
+    background: #000000;
+
+}
+.mainTable {
+
+    border-spacing: 0px;
+
+}
+td {
+    border: none;
+    padding:5px;
+}
+.mainTableTr {
+  border-bottom: 1pt solid black;
+}
+table thead th { border-bottom: 1px solid #000; }
+
+.box {
+
+  padding: 10px;
+  border: 2px solid black;
+  box-shadow: 5px 5px #888888;
+
+}
+
+div.footer {
+    display: block;
+
+    position: running(footer);
+}
+
+</style>
+</head>
+<body>
+
+<div class="page1">
+    <div id="footer" style="" class='footer'>
+        <p style="float: left;">Date: <span th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy')}"></span></p>
+    </div>
+
+    <table width="100%" style="border-style: none;">
+        <tr>
+<!--            <td style="text-align:left;border-style: none;"><img src="../pdf-resources/images/govtp-logo.png"/></td>-->
+            <td style="text-align:center;border-style: none;">
+                <span class="box" ><strong> ODISHA COMMUNITY TANK DEVELOPMENT AND MANAGEMENT SOCIETY, BHUBANESWAR</strong></span> <br/><br/>
+                <strong><u> PACKAGEWISE LIST OF BIDDERS </u></strong> <br/>
+            </td>
+<!--            <td style="text-align:right;border-style: none;"><img src="../pdf-resources/images/logo.png"/>-->
+
+        </tr>
+    </table>
+
+    <br/>
+    <br/>
+
+    <div>
+        <table style="width:100%;!important">
+            <tr>
+                <td>Scheme of Funding</td>
+                <td colspan="3">: <strong  th:text="${packageWiseBidderData[0].projectName}"></strong></td>
+                <td>BID Identification</td>
+                <td>: <strong th:text=" 'RFB-  ' + ${packageWiseBidderData[0].bidId}"></strong></td>
+            </tr>
+
+            <tr>
+                <td>Name of work</td>
+                <td colspan="3">: <strong th:text="${packageWiseBidderData[0].nameOfWork}"></strong></td>
+                <td>Amount put to Tender Rs </td>
+                <td>: <strong th:text="${packageWiseBidderData[0].charTenderAmount}"></strong></td>
+            </tr>
+
+            <tr>
+                <td>Name of District</td>
+                <td>: <strong th:text="${packageWiseBidderData[0].districtName}"></strong></td>
+                <td colspan="2"></td>
+                <td>Financial Turnover Req Rs</td>
+                <td>: <strong th:text="${packageWiseBidderData[0].charFinancialTurnover} + ' Lakh'"> </strong></td>
+
+            </tr>
+
+            <tr>
+                <td >MI Project ID</td>
+                <td colspan="3">: <strong th:text="${projectIdsName}"></strong></td>
+                <td>Similar Work value Req Rs </td>
+                <td>: <strong th:text="${packageWiseBidderData[0].similarWorkValueReq} + ' Lakh'"> </strong></td>
+            </tr>
+
+            <tr>
+                <td>Name of Block</td>
+                <td>: <strong th:text="${blockName[0].block_name}"></strong> </td>
+                <td>Package ID</td>
+                <td>: <strong th:text="${packageWiseBidderData[0].packageId}"></strong></td>
+                <td>Credit Facility Required Rs </td>
+                <td>: <strong th:text="${packageWiseBidderData[0].creditFacilityRequired} + ' Lakh' "></strong></td>
+            </tr>
+
+            <tr>
+                <td>Date of Bid Opening</td>
+                <td>: <strong th:text="${packageWiseBidderData[0].charTenderOpeningDate}"></strong></td>
+                <td colspan="4"></td>
+            </tr>
+
+        </table>
+    </div>
+
+    <p><span class="test" style="margin-left: 870px;"><strong><u>Amount in Lakh INR.</u></strong></span></p>
+
+    <hr style=" border: 1px solid black;"/>
+    <table class="mainTable" style="width:100%; border: 0px;text-align: center !important;">
+        <thead>
+        <tr class="mainTableTr">
+            <th>Sl.</th>
+            <th style="width: 18%">Name of Participating Agencies</th>
+            <th style="width: 10%">License Validity</th>
+            <th>Bid Security Validity</th>
+            <th>Similar Work Agmt Value Available</th>
+            <th>Completed 90% of Work</th>
+            <th>Max Annual Turnover Available</th>
+            <th>Credit Facility Available</th>
+            <th style="width: 7%">Bid Validity</th>
+            <th>Amount of Bid by Agency (Rs.)</th>
+            <th>Bid % Excess/Less</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <br/>
+        <tr class="mainTableTr" th:each="data,iterator : ${packageWiseBidderData}">
+            <td th:text="${iterator.index+1}" ></td>
+            <td style="text-align: left" th:text = "${data.agency}"></td>
+            <td th:text = "${data.licenseValidity}"></td>
+            <td th:text = "${data.bidSecurity}"></td>
+            <td style="text-align: right"  th:text = "${data.similarWorkValue}"></td>
+            <td style="text-align: right"  th:text = "${data.percentageCompleted} + ' %' "></td>
+            <td style="text-align: right"  th:text = "${data.maxTurnOver}"></td>
+            <td style="text-align: center" th:text = "${data.creditFacilityAvailable}"></td>
+            <td style="text-align: center" th:text = "${data.bidValidity}"></td>
+            <td style="text-align: right"  th:text = "${data.charAmountQuoted}"></td>
+            <td style="text-align: center" th:text = "${data.amountPercentage} + ' %' "></td>
+        </tr>
+        </tbody>
+
+    </table>
+
+    <br/>
+    <hr  style=" border: 1px solid black;"/>
+    <p><strong>Summary for Package :</strong> <strong>(</strong> <strong th:text = "${record}"></strong> <strong> </strong>) </p>
+    <hr style=" border: 1px solid black;"/>
+
+    <p style="text-align: right;justify-items: center;">Executive Engineer (Mon), OIIPCRA</p>
+
+</div>
+</body>
+</html>

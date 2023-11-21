@@ -1,0 +1,212 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document</title>
+  <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css"/>-->
+  <!--  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"/>-->
+  <!--  <link rel="stylesheet" th:href="@{../pdf-resources/css/bootstrap2.css}"/>-->
+
+  <style>
+
+.container {
+            padding-top: 30px;
+             width: 1000px;
+              width: auto;
+              margin-right: auto;
+    margin-left: auto;
+    *zoom: 1;
+        }
+        .container:before,
+.container:after {
+    display: table;
+    line-height: 0;
+    content: ""
+}
+
+.container:after {
+    clear: both
+}
+
+  @page {
+    size: landscape;
+}
+
+
+tr:nth-child(even) {
+<!--  background-color: #f2f2f2;-->
+    background-color: #ebf3fc;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 20px
+}
+
+.table th,
+.table td {
+    padding: 8px;
+    line-height: 20px;
+    text-align: center;
+    vertical-align: top;
+    border-top: 1px solid #ddd
+     border: 1px solid black;
+}
+
+.about-border {
+    display: block;
+    width: 220px;
+    height: 1px;
+    background: #000000;
+
+}
+
+div.footer {
+    display: block;
+
+    position: running(footer);
+}
+
+ @page {
+        @bottom-right {
+            content: element(footer);
+        }
+    }
+@page {
+  @bottom-left  {
+
+    content: date("dd.MM.yyyy HH.mm");
+  }
+  }
+.rupee{
+    background-position:center;
+    padding-left:15px;
+<!--    padding-top:20px;-->
+    width: 10px;
+    height: 14px;
+    background-image: url('../pdf-resources/images/rupee.png');
+    display:block;
+    background-repeat: no-repeat;
+}
+.child{
+    display: inline-block;
+    padding: 1rem 1rem;
+    vertical-align: middle;
+}
+
+div.header2 {
+    position: running(header2);
+  }
+
+@page {
+ @top-center {
+    content: element(header2);
+    }
+ }
+
+ @page :first {
+ @top-center {
+    content: element(header);
+    }
+}
+
+.table {
+            -fs-table-paginate: paginate;
+        }
+
+
+  @page {
+  @top-right {
+    content: "Page " counter(page) " of " counter(pages);
+  }
+}
+
+
+
+
+
+</style>
+</head>
+<body>
+<!--<div class="container">-->
+<!--    <div class="row">-->
+       <div id="footer" style="" class='footer'>
+           <div class="about-border"></div>
+
+        <p style="float: left;">OIIPCRA-Fin Bid / <span th:text="${#dates.format(#dates.createNow(), 'dd-MM-yyyy')}"></span></p>
+
+           </div>
+<!--        <div style=" display: flex; justify-content: space-around;">-->
+<!--            <img  src="../pdf-resources/images/logo.png"  class="img-rounded logo" />-->
+
+
+<!--            <img  src="../pdf-resources/images/logo-text.png" style="margin-left:30px" class="img-rounded logo" />-->
+
+
+<!--            <img  src="../pdf-resources/images/govtp-logo.png" style="margin-left:40px" class="img-rounded logo" />-->
+<!--        </div>-->
+<!--    </div>-->
+
+
+
+<!--    <p>-->
+<div id="header" class="header" >
+  <h3><span class="test" style="margin-left:10%; color:blue; font-family:sans-serif;">Financial Bid Opening in Tender ID:    <strong th:text="${Tender.bidId}"></strong></span>         <span class="test" style="margin-left:2% ; color:blue; font-family:sans-serif;"> Financial Bid Opened on Dt: <strong th:text="${Tender.techBidDate}"></strong></span></h3>
+  <h2 style="text-align : center; font-family:sans-serif;text-size:15px; "><strong th:text="${officeName}"></strong></h2>
+</div>
+<div id="header2" class="header2" style= "font-family:sans-serif;"><p style="text-align: center;"><strong th:text="${officeName}"></strong></p></div>
+<br/>
+<!--        <span class="nowrap">Financial Bid Opening in Tender ID:</span> <span class="nowrap" th:text="${bidId}"></span>-->
+<!--    </p>-->
+<!--    <p>-->
+<!--        <span class="nowrap">Date of Financial Bid Opening:</span>-->
+<!--        <span  th:text="${#dates.format(tenderOpeningDate, 'dd-MMM-yyyy')}" class="nowrap"></span>-->
+<!--    </p>-->
+
+<div>
+  <table class="table table-striped" style="width:100%;">
+    <thead style="background-color: #457ca3; color: white;" >
+
+    <tr>
+      <th style="width:4% ;">Work Sl in TCN</th>
+      <th >Work / Package Id</th>
+      <th >Amount Put to tender in Rs.</th>
+      <th  style="width:18% ;" >Name of Agency</th>
+      <th  style="width:12% ;">Class of License</th>
+      <th >Rate Quoted by Bidder in Rs.</th>
+      <th style="width:4% ;">Rate in Percentage Excess/Less</th>
+      <th  style="width:12% ;">Bid Position</th>
+      <th >Max Bid Capacity in Lakh Rs.</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="data,iterator : ${FinancialBidResultDto}">
+
+      <td style = "text-align:left" th:text="${data.workSlNoInTcn}"></td>
+      <td th:text="${data.workId}"></td>
+      <td text-align="right"><img src="../pdf-resources/images/rupee.png" width="8px"/><span th:text="${data.tenderAmountString}"></span></td>
+      <td style = "text-align:left" th:text="${data.agency}"></td>
+      <td style = "text-align:left" th:text="${data.licenseClass}"></td>
+      <td text-align ="right"><img src="../pdf-resources/images/rupee.png" width="8px"/><span style = "text-align:center" th:text="${data.amountQuoted}"></span></td>
+      <td style = "text-align:right"> <span  th:text="${data.rateExcessLess}">   </span>  <img src="../pdf-resources/images/per-icon.png"  width="8px"/></td>
+      <td style = "text-align:right"  th:text="${data.bidPosition}"></td>
+      <td style = "text-align:right" ><img src="../pdf-resources/images/rupee.png" width="8px"/><span style = "text-align:right" th:text="${data.maxBidCapacityString}"></span></td>
+    </tr>
+    </tbody>
+  </table>
+  <br/>
+  <hr/>
+  <p><strong>Summary records :</strong> (<strong th:text="${FinancialBidResultDto.size}"> </strong><strong>  <span th:text="${name}"></span></strong>)</p>
+  <p class="test" style="margin-left:40%" ><strong></strong> <span class="test" style="margin-left:50%" th:text = "${OfficeData[0].designationName}"> </span><span th:text = "${DivName}"></span></p>
+  <br/>
+
+</div>
+
+
+</body>
+</html>

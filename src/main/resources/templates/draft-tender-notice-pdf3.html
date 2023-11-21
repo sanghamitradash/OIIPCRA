@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document</title>
+  <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css"/>-->
+  <!--  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"/>-->
+  <!--  <link rel="stylesheet" th:href="@{../pdf-resources/css/bootstrap2.css}"/>-->
+
+  <style>
+        body {
+    text-align: justify;
+    text-justify: inter-word;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container {
+    padding-top: 22px;
+    width: 1000px;
+    width: auto;
+    margin-right: auto;
+    margin-left: auto;
+    *zoom: 1;
+}
+.container:before,
+.container:after {
+    display: table;
+    line-height: 0;
+    content: "";
+}
+
+.container:after {
+    clear: both;
+}
+
+table,
+th,
+td {
+    border: 1px solid #9e9696;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 8px;
+    line-height: 15px;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+}
+
+.table th {
+    font-weight: bold;
+}
+
+.table thead th {
+    vertical-align: bottom;
+}
+
+.table caption + thead tr:first-child th,
+.table caption + thead tr:first-child td,
+.table colgroup + thead tr:first-child th,
+.table colgroup + thead tr:first-child td,
+.table thead:first-child tr:first-child th,
+.table thead:first-child tr:first-child td {
+    border-top: 0;
+}
+table tbody tr td{
+  padding: 8px;
+    line-height: 15px;
+}
+
+
+@page {
+    size: landscape;
+}
+
+@page {
+    @top-right {
+        content: "Page " counter(page) " of " counter(pages);
+    }
+
+}
+
+div.footer {
+    display: block;
+
+    position: running(footer);
+}
+
+@page {
+   @bottom-left {
+        content:  element(footer);
+    }
+  }
+
+.padding {
+    padding-right: 20px;
+    width: 34%;
+}
+.paddingRight {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+
+.zobra:nth-child(even) {
+<!--    background-color: #f2f2f2;-->
+       background-color: #ebf3fc;
+}
+.about-border {
+    display: block;
+    width: 160px;
+    height: 1px;
+    background: #000000;
+
+}
+
+
+
+</style>
+</head>
+<body>
+
+
+<div class="landscapePage" >
+  <h5 style=" background-color: #f2f2f2; padding: 9px; margin-bottom: 1px;"><strong>List of Works - DTCN(ANNEXURE-A) <span style="margin-left: 300px;">Bid ID:<span th:text="${DraftTenderNotice.bidId}"></span></span> <u style="float:right;margin-top: 8px;">Amount in Lakh INR</u></strong></h5>
+  <table style="width:100%; border: 1px solid black;text-align: center !important;">
+    <thead style="background-color: #457ca3; color: white;" >
+    <tr>
+      <th style="width:5%">Sl No</th>
+      <th style="width:5%">Work Sl No. in TCN</th>
+      <th style="width:10%">Name of District</th>
+      <th style="width:10%">Name of Block</th>
+      <th style="width:10%" >Work Id</th>
+      <th style="width:10%">Estimated amount Put to tender(INR)</th>
+      <th style="width:10%">Amount of Bid Security</th>
+      <th style="width:10%">Similar Work Value (3a)</th>
+      <th style="width:10%">Annual Turn Over Required</th>
+      <th style="width:10%">Liquid Asset Required (3g)</th>
+      <th style="">Days for Completion</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr  class="zobra" th:each="data,iterator : ${annexureAData}">
+      <td th:text="${iterator.index+1}"></td>
+      <td th:text="${data.workSlNOTcn}"></td>
+      <td th:text="${data.distName}"></td>
+      <td th:text="${data.blockName}"></td>
+      <td th:text="${data.workIdentificationCode}"></td>
+      <td th:text="${data.tenderAmount2}"></td>
+      <td th:text="${data.emd}"></td>
+      <td th:text="${data.similarWorkValue}"></td>
+      <td th:text="${data.turnover}"></td>
+      <td th:text="${data.liquidAssetTarget}"></td>
+      <td th:text="${data.timeForCompletion}"></td>
+    </tr>
+    </tbody>
+  </table>
+
+<!--  <hr style="border:1px solid #9e9696"/>-->
+  <br/>
+  <br/>
+  <br/>
+  <p><span style="margin-left: 648px;"th:text="${OfficeData[0].designationName}"></span><span th:text="${OfficeData[0].divisionName}"></span></p>
+</div>
+</body>
+</html>

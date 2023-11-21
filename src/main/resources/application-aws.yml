@@ -1,0 +1,45 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    password: Oiipcra$54123
+    url: jdbc:postgresql://oiipcra-db.cyjrggu3cei8.ap-south-1.rds.amazonaws.com:5432/oiipcra?currentSchema=oiipcra_oltp,public
+    username: app_oiipcra
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: -1
+      max-request-size: -1
+
+
+#AWS S3 Configuration
+aws:
+  access_key_id: AKIAWP75M2FMKB5J7DGW
+  secret_access_key: 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
+  s3:
+    region: ap-south-1
+    bucket: ofarisbucket
+accessEstimateDocument: "https://ofarisbucket.s3.ap-south-1.amazonaws.com/EstimateDocument/"
+accessImagePath: "https://ofarisbucket.s3.ap-south-1.amazonaws.com/"
+accessDocumentPath: "https://ofarisbucket.s3.ap-south-1.amazonaws.com/ContractDocument/"
+accessIssueDocumentPath: "https://ofarisbucket.s3.ap-south-1.amazonaws.com/IssueDocument/"
+accessAgencyImagePath: "https://ofarisbucket.s3.ap-south-1.amazonaws.com/AgencyImage/"
+saveAgencyImagePath: "https://ofarisbucket.s3.ap-south-1.amazonaws.com/AgencyImage/"
+accessWorkProgressImagePath: "https://ofarisbucket.s3.ap-south-1.amazonaws.com/WorkProgress/"
+accessGrievanceDocumentPath: "https://ofarisbucket.s3.ap-south-1.amazonaws.com/Grievance/"
+accessBidDocumentPreviousPath: "https://ofarisbucket.s3.ap-south-1.amazonaws.com/BidDocumentPrevious/"
+accessDraftTenderNoticePreviousPath: "https://ofarisbucket.s3.ap-south-1.amazonaws.com/DraftTenderNoticePrevious/"
+
+
+accessFeederImagePath: "https://ofarisbucket.s3.ap-south-1.amazonaws.com/feeder"
+accessDepthImagePath: "https://ofarisbucket.s3.ap-south-1.amazonaws.com/depthImage"
+accessCadImagePath: "https://ofarisbucket.s3.ap-south-1.amazonaws.com/cad"
+accessIssueImagePath: "https://ofarisbucket.s3.ap-south-1.amazonaws.com/IssueImage"
+
+
+
+#PDF IMAGE PATH
+#octdmsLogoPath: "/usr/share/nginx/html/oiipcra_pdf_images/octdms-logo.png"
+#odishaWhiteLogoPath: "/usr/share/nginx/html/oiipcra_pdf_images/odishaWhite.png"
+

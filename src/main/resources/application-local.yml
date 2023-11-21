@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/oiipcra?currentSchema=oiipcra_oltp
+    username: postgres
+    password: p455w0rd
+
+aws:
+  access_key_id: AKIAWP75M2FMKB5J7DGW
+  secret_access_key: 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
+  s3:
+    region: ap-south-1
+    bucket: ofarisbucket

@@ -1,0 +1,61 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    password: Oiipcra$54123
+    url: jdbc:postgresql://oiipcra-database.cyjrggu3cei8.ap-south-1.rds.amazonaws.com:5432/oiipcra?currentSchema=oiipcra_oltp,public
+    username: app_oiipcra
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: -1
+      max-request-size: -1
+
+
+#
+##AWS S3 Configuration
+#aws:
+#  access_key_id: AKIAWP75M2FMKB5J7DGW
+#  secret_access_key: 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
+#  s3:
+#    region: ap-south-1
+#    bucket: ofarisbucket
+#
+#accessImagePath: "https://ofarisbucket.s3.ap-south-1.amazonaws.com/"
+#accessFeederImagePath: "https://ofarisbucket.s3.ap-south-1.amazonaws.com/feeder"
+#accessDepthImagePath: "https://ofarisbucket.s3.ap-south-1.amazonaws.com/depthImage"
+#accessCadImagePath: "https://ofarisbucket.s3.ap-south-1.amazonaws.com/cad"
+#accessDocumentPath: "https://ofarisbucket.s3.ap-south-1.amazonaws.com/ContractDocument/"
+#accessIssueDocumentPath: "https://ofarisbucket.s3.ap-south-1.amazonaws.com/IssueDocument/"
+#saveFeederImagePath: "https://ofarisbucket.s3.ap-south-1.amazonaws.com/FeederImage/"
+#accessAgencyImagePath: "https://ofarisbucket.s3.ap-south-1.amazonaws.com/AgencyImage/"
+#saveAgencyImagePath: "https://ofarisbucket.s3.ap-south-1.amazonaws.com/AgencyImage/"
+#accessWorkProgressImagePath: "https://ofarisbucket.s3.ap-south-1.amazonaws.com/WorkProgress/"
+#accessGrievanceDocumentPath: "https://ofarisbucket.s3.ap-south-1.amazonaws.com/Grievance/"
+#accessBidDocumentPreviousPath: "https://ofarisbucket.s3.ap-south-1.amazonaws.com/BidDocumentPrevious/"
+#accessDraftTenderNoticePreviousPath: "https://ofarisbucket.s3.ap-south-1.amazonaws.com/DraftTenderNoticePrevious/"
+
+
+#AWS S3 Configuration
+aws:
+  access_key_id: AKIAUH6OYZSVXAXCC4HO
+  secret_access_key: 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
+  s3:
+    region: ap-south-1
+    bucket: oiipcra
+
+accessEstimateDocument: "https://oiipcra.s3.ap-south-1.amazonaws.com/EstimateDocument/"
+accessImagePath: "https://oiipcra.s3.ap-south-1.amazonaws.com/"
+accessFeederImagePath: "https://oiipcra.s3.ap-south-1.amazonaws.com/feeder"
+accessDepthImagePath: "https://oiipcra.s3.ap-south-1.amazonaws.com/depthImage"
+accessCadImagePath: "https://oiipcra.s3.ap-south-1.amazonaws.com/cad"
+accessDocumentPath: "https://oiipcra.s3.ap-south-1.amazonaws.com/ContractDocument/"
+accessIssueDocumentPath: "https://oiipcra.s3.ap-south-1.amazonaws.com/IssueDocument"
+accessIssueImagePath: "https://oiipcra.s3.ap-south-1.amazonaws.com/IssueImage"
+accessAgencyImagePath: "https://oiipcra.s3.ap-south-1.amazonaws.com/AgencyImage/"
+saveAgencyImagePath: "https://oiipcra.s3.ap-south-1.amazonaws.com/AgencyImage/"
+accessWorkProgressImagePath: "https://oiipcra.s3.ap-south-1.amazonaws.com/WorkProgress/"
+accessGrievanceDocumentPath: "https://oiipcra.s3.ap-south-1.amazonaws.com/Grievance/"
+accessBidDocumentPreviousPath: "https://oiipcra.s3.ap-south-1.amazonaws.com/BidDocumentPrevious/"
+accessDraftTenderNoticePreviousPath: "https://oiipcra.s3.ap-south-1.amazonaws.com/DraftTenderNoticePrevious/"

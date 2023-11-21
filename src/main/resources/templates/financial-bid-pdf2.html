@@ -1,0 +1,293 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" >
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+    <style>
+        body {
+    text-align: justify;
+    text-justify: inter-word;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    padding-top: 22px;
+    width: 1000px;
+    width: auto;
+    margin-right: auto;
+    margin-left: auto;
+    *zoom: 1;
+}
+.container:before,
+.container:after {
+    display: table;
+    line-height: 0;
+    content: "";
+}
+
+.container:after {
+    clear: both;
+}
+
+@page {
+    @top-right {
+        content: "Page " counter(page) " of " counter(pages);
+    }
+
+}
+
+@page {
+   @bottom-right {
+        content:  element(footer);
+    }
+  }
+
+@page {
+   @top-right {
+        content:  element(footer2);
+    }
+  }
+
+ @page {
+    size: A4;
+}
+
+
+div.footer {
+    display: block;
+    position: running(footer);
+}
+
+
+div.footer2 {
+    display: block;
+    position: running(footer2);
+}
+
+
+div.page1 {
+    page-break-after: always;
+}
+
+.table1 {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.table1 td, th {
+  border: 1px solid black;
+  padding: 8px;
+}
+.table2 td {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+}
+
+.table2 th {
+  border: 1px solid black;
+  padding: 8px;
+}
+
+
+</style>
+</head>
+<body>
+<div class="container" style="font-family:sans-serif;">
+    <div class="footer">
+
+        <p style="float: left;"> <hr style="width:250px"/><i>OIIPCRA W2-1/2019 &nbsp; &nbsp; &nbsp; <strong>BAL-03</strong></i></p>
+
+    </div>
+
+    <div class="footer2">
+
+        <p style="float: right;"> <i>BID EVALUATION REPORT OF PART-II</i></p>
+
+    </div>
+
+    <div class="page1">
+        <!--        <p style="text-align:center;border-style: none;"><h3>BID EVALUATION REPORT OF PART-1 OF BIDS</h3>-->
+        <p style="text-align: center"><strong>BID EVALUATION REPORT OF PART-II OF BIDS<br/>(National Competitive Bidding through e-procurement system)</strong></p>
+        <p>This Bid Evaluation Report for Part-2 of the bids is in continuation of the Bid Evaluation Report for
+            Part-1 of the bids, which was approved by the Review Committee for Procurement held on <strong>20-04-2019.</strong></p>
+        <p><strong>1.0 &nbsp; Scope of Contract and Estimated Cost:</strong></p>
+        <p>The work covered under the Bid is for <strong>Construction of Civil &amp; CAD-WM Works of MIPs in
+            Bargarh District in the Package ID : BGH-05.</strong><br/>
+            Referrence Bid ID : <strong>OIIPCRA-W2-1/2019.</strong><br/>
+                    The estimated cost of the work is <strong><img src="../pdf-resources/images/rupee.png" width="8px"/> 61,405,626.94</strong></p>
+        <p><strong>2.0 &nbsp; Background prior to opening of Part 2 Bids</strong></p>
+        <p>Bids for the above referred work were invited through e-tendering system under National
+            Competitive Bidding procedure, using the bidding documents based on the Model Bidding
+            Documents cleared by OIIPCRA and World Bank. In accordance with the provisions of the bidding
+            documents, Part 1 Bid (Technical Qualification part of bid) was opened online on <strong>29-03-2019.</strong> As
+            per evaluation of Part 1 of bids approved by the Review Committee for Procurements of
+            OCTDMS headed by the Addl. Project Director (Engg)-OIIPCRA (Competent Authority), following
+            bidders were declared as having qualified to be eligible for opening of Part 2 bids in terms of ITB
+            Clause-3.<br/><br/><span style="margin-left: 20px">1. &nbsp;  BKD Infrastructure Pvt. Ltd.</span><br/><br/>
+
+            The result of evaluation of Part 1 bids, as approved by Review Committee of OCTDMS headed by
+            the Addl. Project Director (Engg)-OIIPCRA (The Competent Authority) was uploaded on the EPROC SYSTEM on 20-04-2019, allowing a period of Seven working days to the bidders to submit
+            complaints, if any. However, no complaints on the evaluation of Part-I bids were received. Part
+            2 bids (Financial Part of bids) only of the above mentioned qualified bidders were opened by the
+            nominated representatives of the OCTDMS/ SPMU on <strong>02-05-2019 at 11.00 hrs.</strong> The specified
+            date and time of opening of Part 2 of bids was informed through e-mail/notice on the eProcurement website. The summary of opening of Part 2 bids was prepared and placed in the
+            SPMU level Review Committee for Procurement on <strong>10-06-2019</strong> which is attached as <strong>Attachment - 1.</strong></p>
+
+        <p><strong>3.0 &nbsp; Preliminary Evaluation of bids:</strong></p>
+        <p>3.1 &nbsp; Bid prices as quoted by the bidders are tabulated below:</p>
+
+        <table class="table1" style="width:100%; 1px solid #696767eb !important;">
+            <tr>
+                <th>Sl</th>
+                <th>Name of Agency</th>
+                <th>Bid Price (INR)</th>
+                <th>% Excess/ Less</th>
+            </tr>
+            </table>
+        <table style="width:100%;">
+            <tr>
+                <td style="border: 0px solid; margin-left:10%; !important;">1</td>
+                <td style="border: 0px solid; margin-left:10%; !important; text-align: center;">BKD Infrastructure Pvt. Ltd.</td>
+                <td style="border: 0px solid; margin-left:10%; !important;"><img src="../pdf-resources/images/rupee.png" width="8px"/> 6,04,48,828.00</td>
+                <td style="border: 0px solid; margin-left:10%; !important;">-1.56<span>% Less</span></td>
+            </tr>
+        </table>
+        <hr style="border: none; border-bottom: 0.5px solid black ;" />
+        <p>The comparative statement for the bids downloaded from e-procurement system is attached as
+            <strong>Attachment-2.</strong></p>
+        <p>3.2 &nbsp; Responsiveness to Commercial Conditions:</p>
+        <p>None of the bidders have stipulated any deviations from the commercial conditions of the
+            bidding documents, and all the bids are therefore; considered responsive to the commercial
+            conditions.</p>
+        <p>3.3 &nbsp; Responsiveness to Technical Requirements.</p>
+           <p> The technical responsiveness of bid has been examined by the Review Committee for Procurement with respect to the bid conditions which were not covered during
+               evaluation of Part 1 bids, i.e., in respect of Priced Bill of Quantities, and Technical Specifications, in accordance with ITB Clause-3.
+               The bids are compliant with the Technical Specifications/ Requirements and considered technically responsive. Bid of the bidders at Paragraph-3
+               above are determined to be substantially responsive to the commercial and technical provisions of the bidding documents.</p>
+        <p><strong>4.0 &nbsp; Detailed Evaluation of the Substantially Responsive Bids</strong></p>
+        <p>4.1</p>
+        <p>The single responsive bid that of <strong>M/s BKD Infrastructure Pvt. Ltd., Super-Class Contractor.</strong>
+            found to be -1.56% Less than the technical sanctioned estimate cost put to tender.</p>
+        <p>4.2</p>
+        <p>There are no such conditions but the quoted prices for some of the major items of work warranted the loading of the bid price. No other specific evaluation criterion
+            has been stipulated in the bid document. As such, the loading of the prices is therefore calculated at <strong><img src="../pdf-resources/images/rupee.png" width="8px"/> 956,799.00.</strong></p>
+        <p>4.3</p>
+        <p>The bid is evaluated and otherwise found to be substantially responsive. The Evaluation Committee discussed and concluded reasonableness of the bidder’s price and
+            recommended for <strong>acceptance.</strong></p>
+        <p><strong>5.0 &nbsp; Comments on the Unbalanced Bid Items</strong></p>
+        <p>There are several items having quoted rates to be considered as unbalanced in the lowest
+            evaluated responsive bid and the value of the items considered as unbalanced/ loading of bid
+            prices computed to <strong><img src="../pdf-resources/images/rupee.png" width="8px"/> 956,799.00.</strong> However, no subcontracting has been proposed.</p>
+        <p><strong>6.0 &nbsp; Computation of Bid Capacity of the lowest responsive bidder</strong></p>
+        <p>6.1 <br/>The bid capacity of bidder is computed following the limitations provided in ITB Clause -3 (b) for
+            amount of Annual Financial Turnover and Clause-3 (g) for Availability of liquid assets and/or
+            credit facilities. Further, according to clause-3, when a bidder participates in multiple bids, the
+            bidder has to demonstrate the qualifications for Annual Turnover (3(b)) and Availability of liquid
+            assets (3(g)) to the cumulative value of the packages. Further, the balance bid capacity after
+            award of work is computed as under:<br/>
+            <strong>Maximum Bid Capacity = 1 x Max Annual Turnover x Period for Completion in Years.
+            Balance Bid Capacity = Max Bid Capacity - 2 x Estd. Cost of Work</strong></p>
+        <p>6.2</p>
+        <p>The bidder has participated and evaluated as Lowest Responsive bidder in <strong>2 Nos.</strong> of the
+            packages in the Package IDs: <strong>BGH-05, BGR-07.</strong><br/>
+            <strong>The bid capacity is arrived as indicated in the table below:<span style="margin-left: 130px;"><i>(Amount in Lakh INR)</i></span></strong></p>
+        <table class="table1" >
+            <thead class="table1" style="width:100%; 1px solid #696767eb !important;">
+            <tr>
+                <th >Package ID</th>
+                <th >Estimated Cost</th>
+                <th >Amount of Bid</th>
+                <th >Max. Annual Financial Turnover</th>
+                <th>Max. Bid Capacity</th>
+                <th>Balance Bid Capacity</th>
+            </tr>
+            </thead>
+        </table>
+        <table style="width:100%;">
+            <tbody>
+            <tr>
+                <td style="border: 0px solid; margin-left:10%; !important;">BGH-05</td>
+                <td style="border: 0px solid; margin-left:20%; !important;"><img src="../pdf-resources/images/rupee.png" width="8px"/> 614.06</td>
+                <td style="border: 0px solid; margin-left:8%; !important;"><img src="../pdf-resources/images/rupee.png" width="8px"/> 604.49</td>
+                <td style="border: 0px solid; margin-left:5%; !important; text-align: center;" ><img src="../pdf-resources/images/rupee.png" width="8px"/> 16,735.71</td>
+                <td style="border: 0px solid; margin-left:5%; !important; text-align: center;" ><img src="../pdf-resources/images/rupee.png" width="8px"/> 20,919.64</td>
+                <td style="border: 0px solid; margin-left:5%; !important; text-align: center;" ><img src="../pdf-resources/images/rupee.png" width="8px"/> 19,691.52</td>
+            </tr>
+            </tbody>
+        </table>
+        <hr style="border: none; border-bottom: 0.5px solid black ;" />
+
+        <p>6.3</p>
+        <p>As found from the tally table at Para-6.2 above, The Bidder has sufficient Bid Capacity to get
+            awarded with the responsive bid with work ID: <strong>BGH-05 - Bargarh</strong> District.</p>
+        <p><strong>The bid capacity for Bidder's bid option computed as below:<span style="margin-left: 120px;"><i>(Amount in Lakh INR)</i></span></strong></p>
+
+        <table class="table1" >
+            <thead class="table1" style="width:100%; 1px solid #696767eb !important;">
+            <tr>
+                <th >Package ID</th>
+                <th >Estimated Cost</th>
+                <th >Amount of Bid</th>
+                <th >Max. Annual Financial Turnover</th>
+                <th>Max. Bid Capacity</th>
+                <th>Balance Bid Capacity</th>
+            </tr>
+            </thead>
+        </table>
+        <table style="width:100%;">
+            <tbody>
+            <tr>
+                <td style="border: 0px solid; margin-left:10%; !important;">BGH-05</td>
+                <td style="border: 0px solid; margin-left:20%; !important;"><img src="../pdf-resources/images/rupee.png" width="8px"/> 614.06</td>
+                <td style="border: 0px solid; margin-left:8%; !important;"><img src="../pdf-resources/images/rupee.png" width="8px"/> 604.49</td>
+                <td style="border: 0px solid; margin-left:5%; !important; text-align: center;" ><img src="../pdf-resources/images/rupee.png" width="8px"/> 16,735.71</td>
+                <td style="border: 0px solid; margin-left:5%; !important; text-align: center;" ><img src="../pdf-resources/images/rupee.png" width="8px"/> 20,919.64</td>
+                <td style="border: 0px solid; margin-left:5%; !important; text-align: center;" ><img src="../pdf-resources/images/rupee.png" width="8px"/> 19,691.52</td>
+            </tr>
+            </tbody>
+        </table>
+        <hr style="border: none; border-bottom: 0.5px solid black ;" />
+
+        <p><strong>7.0 &nbsp; Recommendations of Evaluation Committee:</strong></p>
+        <p>The Review Committee for Procurement of OCTDMS, recommends to award the Contract for
+        the work Package : <strong>BGH-05 - Bargarh</strong> District infavour of the Single Responsive Bidder M/s BKD
+        Infrastructure Pvt. Ltd., Super-Class Contractor. for a bid amount of <strong><img src="../pdf-resources/images/rupee.png" width="8px"/> 60,448,828.00</strong> which
+        is <strong>-1.56% Less</strong> based on the prevailing Schedule of Rates.</p>
+        <p><strong>8.0 &nbsp; Abstract of Important Features of the Tender Proceedings:</strong></p>
+        <p>i. Name of the Awardee: &nbsp; <span><strong>M/s BKD Infrastructure Pvt. Ltd., Super-Class Contractor.</strong></span></p>
+        <p>ii. Tender Awarded infavour of &nbsp; <span><strong>Single responsive bid.</strong></span></p>
+        <p>iii. Estimated Amount put to tender: &nbsp; <span><strong><img src="../pdf-resources/images/rupee.png" width="8px"/> 61,405,626.94</strong></span></p>
+        <p>iv. Rate Quoted by the Bidder: &nbsp; <span><strong><img src="../pdf-resources/images/rupee.png" width="8px"/> 60,448,828.00 &nbsp; &nbsp; @ -1.56% Less</strong></span></p>
+        <p>v. Mobilisation advance (upto 5%) : &nbsp; <span><strong><img src="../pdf-resources/images/rupee.png" width="8px"/> 3,070,281.35</strong></span></p>
+        <p>vi. Equipment advance (upto 10%) : &nbsp; <span><strong><img src="../pdf-resources/images/rupee.png" width="8px"/> 6,140,562.69</strong></span></p>
+        <p>vii. Performance Security (@ 2.5%) : &nbsp; <span><strong><img src="../pdf-resources/images/rupee.png" width="8px"/> 1,535,140.67</strong></span></p>
+        <p>viii. Addl Performance Security if any : &nbsp; <span><strong><img src="../pdf-resources/images/rupee.png" width="8px"/> 956,798.94</strong></span></p>
+        <p>ix. Retention Money @ 2.5% : &nbsp; <span><strong> Gross value of Each Invoice</strong></span></p>
+        <p>x. Date of Bid Validity up to : &nbsp; <span><strong>27-06-2019</strong></span></p>
+        <p>xi. MI Division-in-Charge of Work : &nbsp; <span><strong>MI Division, Padampur</strong></span></p>
+        <hr style="border: none; border-bottom: 0.5px solid black ;" />
+
+        <p><strong>9.0 &nbsp; Decision of Bid Accepting Authority:</strong></p>
+        <p>Bid Accepting Authority has accepted the recommendations of the Review Committee for Procurement.<br/><br/>
+            <span style="margin-left: 70px;"><strong>Bid Accepting Authority:</strong></span></p><br/><br/><br/>
+        <p style="margin-left: 70px;"><strong>Project Director, OCTDMS <span style="margin-left:20px;">Date : 10-01-2023</span></strong></p> <br/><br/>
+
+        <p style="float: left; margin-top: 80px; margin-right: 30px;" class="bottom;"><hr style="width: 180px; border: none; border-bottom: 1px solid black;"/><span style="margin-left: 15px;">[EE (Procurement)]</span></p>
+        <p style="float: left; margin-top: 80px; margin-left: 50px;" class="bottom;"><hr style="width: 200px; border: none; border-bottom: 1px solid black;"/><span style="margin-left: 14px;">[Project Finance Officer]</span></p>
+        <p style="float: right; margin-top: 80px; margin-left: 50px;" class="bottom;"><hr style="width: 220px; border: none; border-bottom: 1px solid black;"/><span>[Addl. Project Director (Engg)]</span></p>
+
+
+
+    </div>
+
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+    <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css"/>-->
+    <!--  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"/>-->
+    <!--  <link rel="stylesheet" th:href="@{../pdf-resources/css/bootstrap2.css}"/>-->
+
+    <style>
+        body {
+    text-align: justify;
+    text-justify: inter-word;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container {
+    padding-top: 22px;
+    width: 1000px;
+    width: auto;
+    margin-right: auto;
+    margin-left: auto;
+    *zoom: 1;
+}
+.container:before,
+.container:after {
+    display: table;
+    line-height: 0;
+    content: "";
+}
+
+.container:after {
+    clear: both;
+}
+
+table,
+th,
+td {
+    border: 1px solid #9e9696;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 8px;
+    line-height: 15px;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+}
+
+.table th {
+    font-weight: bold;
+}
+
+.table thead th {
+    vertical-align: bottom;
+}
+
+.table caption + thead tr:first-child th,
+.table caption + thead tr:first-child td,
+.table colgroup + thead tr:first-child th,
+.table colgroup + thead tr:first-child td,
+.table thead:first-child tr:first-child th,
+.table thead:first-child tr:first-child td {
+    border-top: 0;
+}
+
+
+
+
+@page {
+    @top-right {
+        content: "Page " counter(page) " of " counter(pages);
+    }
+
+}
+
+div.footer {
+    display: block;
+
+    position: running(footer);
+}
+
+@page {
+   @bottom-left {
+        content:  element(footer);
+    }
+  }
+
+.padding {
+    padding-right: 20px;
+    width: 34%;
+}
+.paddingRight {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+
+.zobra:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.about-border {
+    display: block;
+    width: 160px;
+    height: 1px;
+    background: #000000;
+
+}
+.rupee{
+    background-position:center;
+    padding-left:15px;
+<!--    padding-top:20px;-->
+    width: 10px;
+    height: 14px;
+    background-image: url('../pdf-resources/images/rupee.png');
+    display:block;
+    background-repeat: no-repeat;
+}
+.child{
+    display: inline-block;
+    padding: 1rem 1rem;
+    vertical-align: middle;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+    <div style="" class='footer'>
+        <div class="about-border"></div>
+
+        <p style="margin-top: 2px;"><i><span th:text="${DraftTenderNotice.bidId}"></span></i></p>
+
+    </div>
+    <div class="page1">
+        <table width="100%" style="border-style: none;">
+            <tr>
+                <td style="text-align:left;border-style: none;"><img src="../pdf-resources/images/logo.png"/></td>
+                <td style="text-align:center;border-style: none;">
+                    <strong> GOVERNMENT OF ODISHA</strong> <br/>
+                    <strong> Department of Water Resources </strong><br/>
+                    <strong  th:text="${OfficeData[0].officeName}"></strong> <br/>
+                    <strong> Dist:- <span  th:text="${OfficeData[0].districtName}"></span>,Pin: <span th:text="${OfficeData[0].spuPinNo}"></span></strong> <br/>
+                    Ph:<span th:text="${OfficeData[0].landLineNo}"></span>,E-mail:<span th:text="${OfficeData[0].spuEmail}" ></span> <br/>
+
+
+                </td>
+                <td style="text-align:right;border-style: none;"><img src="../pdf-resources/images/govtp-logo.png"/>
+                </td>
+            </tr>
+        </table>
+        <div style="text-align: center; top: -21px;
+    position: inherit;     line-height: 0px;">
+            <h5>ODISHA INTEGRATED IRRIGATION PROJECT FOR CLIMATE RESILIENT AGRICULTURE(OIIPCRA)</h5>
+            <h5>(WORLD BANK PROJECT ID: PI63533)</h5>
+            <h5>REQUEST FOR BIDS(RFB) E Procurement Notice</h5>
+            <h5>NATIONAL OPEN COMPETITIVE PROCUREMENT FOR SMALL WORKS</h5>
+        </div>
+
+        <hr style="width:70% "/>
+        <div style="text-align: center">
+            <span>RFB No.&nbsp; <strong th:text="${DraftTenderNotice.bidId}"></strong>  </span>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span>Date.&nbsp; <strong
+                th:text="${#dates.format(#dates.createNow(), 'dd-MM-yyyy')}"></strong> </span>
+        </div>
+
+
+        <hr style="width:70%"/>
+        <table style="width:100%; 1px solid #696767eb !important">
+            <tbody th:each="county: ${DraftTenderNotice}">
+            <tr>
+                <td class="padding">Name of Work:</td>
+                <td class="paddingRight" th:text="${county.nameOfWork}"></td>
+            </tr>
+            <tr>
+                <td class="padding">Total No. of Works</td>
+                <td class="paddingRight"><span th:text="${county.noOfWorks}"></span><span>&nbsp;Nos.</span></td>
+            </tr>
+            <tr>
+                <td class="padding">Estimated Cost of Works(s):</td>
+                <!-- <td th:text="${county.variesFrom}">Varies Approximately from </td>-->
+                <td class="paddingRight">Varies Approximately from <strong>Rs.</strong> <span>
+                    <strong th:text="${county.variesFromString}"></strong></span> Lakhs to <strong>Rs.</strong>
+                    <span><strong th:text="${county.variesToString}"></strong>
+                                Lakhs. (Total estimated cost of the <strong th:text="${county.noOfWorks}"></strong> Nos. of Works Rs. <strong
+                                th:text="${county.tenderAmountString}"></strong> Lakhs)</span></td>
+            </tr>
+
+            <tr>
+                <td class="padding">Cost of Bid Document:</td>
+                <td class="paddingRight">Free of Cost</td>
+            </tr>
+            <tr>
+                <td class="padding">Time for Completion:</td>
+                <td class="paddingRight"> Refer to DTCN</td>
+            </tr>
+            <tr>
+                <td class="padding">Availability of Bid Documents:</td>
+                <td class="paddingRight">From <span><strong
+                        th:text="${#dates.format(county.availabilityDocumentFrom, 'dd-MM-yyyy')}"></strong> 10.00 Hrs to
+                    <strong th:text="${#dates.format(county.availabilityDocumentTo, 'dd-MM-yyyy')}"></strong> <strong> up to 15.00 Hrs </strong>
+                    through online.</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="padding">Date of Pre-Bid Meeting:</td>
+                <td class="paddingRight">On dt:  <span><strong
+                        th:text="${#dates.format(county.preBidMeetingDate, 'dd-MM-yyyy')}"></strong></span> 11.30 Hrs.
+                </td>
+            </tr>
+            <tr>
+                <td class="padding">Period for receipt of bid(s):</td>
+                <td class="paddingRight">From <span><strong
+                        th:text="${#dates.format(county.availabilityDocumentFrom, 'dd-MM-yyyy')}"></strong> 11.00 Hrs to
+                    <strong th:text="${#dates.format(county.availabilityDocumentTo, 'dd-MM-yyyy')}"></strong> <strong>up to 15.00 Hrs</strong> online.</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="padding">Payment of bid cost/bid security:</td>
+                <td class="paddingRight">Shall be <strong>Paid On-Line</strong> through thr E-Procurement portal of
+                    Govt. of Odisha.
+                </td>
+            </tr>
+            <tr>
+                <td class="padding">Date of opening of bid(s):</td>
+                <td class="paddingRight">On dt:  <span><strong
+                        th:text="${#dates.format(county.tenderOpeningDate, 'dd-MM-yyyy')}"></strong></span> at 15.30 Hrs
+                    onwards.
+                </td>
+            </tr>
+            <tr>
+                <td class="padding">Details about the tender:</td>
+                <td class="paddingRight">Available in website of <strong>www.dowrodisha.gov.in</strong> and
+                    <strong>www.tendersodisha.gov.in</strong></td>
+            </tr>
+            <tr>
+                <td class="padding">Name/Address of the OIT:</td>
+                <td class="paddingRight"><strong><span th:text="${OfficeData[0].designationName}"></span><span>, </span><span th:text ="${OfficeData[0].divisionName}"></span>, Odisha,</strong> Address: <span  th:text="${OfficeData[0].spuAddress}"></span>,
+                    <span  th:text="${OfficeData[0].spuPost}"></span>
+                    Dist: <span th:text="${OfficeData[0].districtName}"></span> , PIN: <span th:text="${OfficeData[0].spuPinNo}"></span>, E-mail: <span th:text="${OfficeData[0].spuEmail}" ></span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br/> <br/>
+        <p style="margin-right: 54px !important;text-align: right;justify-items: center;"><span th:text="${OfficeData[0].designationName}"></span><span th:text ="${OfficeData[0].divisionName}"></span></p>
+
+        <p>
+            <span>Memo No. &nbsp; <strong th:text="${DraftTenderNotice.memoNumber}"></strong></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Date :<strong
+                th:text="${#dates.format(#dates.createNow(), 'dd-MM-yyyy')}"></strong></span> <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Copy in duplicate along with soft copy of the tender notice
+            submitted to the Deputy Director (Advertisement)-cum-Deputy Secretary to Govt.,
+
+            Information and Public Relation Department, Odisha, Bhubaneswar with request for publication of the
+            advertisement before<strong>Dt:</strong> <strong  th:text="${#dates.format(DraftTenderNotice.availabilityDocumentFrom, 'dd-MM-yyyy')}"></strong> in Two English National Daily and Two Odia Local Daily NewsPaper.
+            The cost of advertisement will be paid by OCTDMS on submission of the bills.
+            <br/>
+            <strong>Encl:Soft Copy of the Advertisement in CD.</strong>
+        <p style="margin-right: 54px !important;text-align: right;justify-items: center;"><span th:text="${OfficeData[0].designationName}"></span><span th:text ="${OfficeData[0].divisionName}"></span></p>
+        </p>
+
+    </div>
+
+</div>
+</body>
+</html>

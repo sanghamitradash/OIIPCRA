@@ -1,0 +1,433 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css"/>-->
+  <!--  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"/>-->
+  <!--  <link rel="stylesheet" th:href="@{../pdf-resources/css/bootstrap2.css}"/>-->
+
+  <style>
+        @page {
+            size: A4 landscape;
+        }
+
+
+        .container {
+            padding-top: 30px;
+            width: 1000px;
+            width: auto;
+            margin-right: auto;
+            margin-left: auto;
+            *zoom: 1;
+        }
+
+        .container:before,
+        .container:after {
+            display: table;
+            line-height: 0;
+            content: ""
+        }
+
+        .container:after {
+            clear: both
+        }
+
+
+        .table {
+            width: 100%;
+            margin-bottom: 20px
+        }
+
+        .table th,
+        .table td {
+            padding: 8px;
+            line-height: 20px;
+            text-align: left;
+            vertical-align: top;
+            border-top: 1px solid #ddd;
+            border: 1px solid black;
+        }
+
+        @page {
+            @bottom-right {
+                content: "Page " counter(page) " of " counter(pages);
+            }
+        }
+
+        @page {
+            @bottom-left {
+                content: date("dd.MM.yyyy HH.mm");
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: arial, sans-serif;
+            font-size: x-small;
+
+        }
+
+        .column {
+            float: left;
+            padding: 10px;
+            height: 300px;
+            /* Should be removed. Only for demonstration */
+        }
+
+        .left {
+            width: 30%;
+            margin-right: 35px;
+        }
+
+        .right {
+            width: 35%;
+        }
+
+        .middle {
+            width: 30%;
+        }
+        /* Clear floats after the columns */
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .right {
+            float: right;
+        }
+
+        .table1 {
+  /* font-family: arial, sans-serif; */
+  border-spacing:0;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td {
+  /* border: 1px solid #dddddd; */
+  text-align: left;
+  padding: 2px;
+}
+.box1{
+    width: 125px;
+    border: 0.5px solid rgb(105, 102, 102);
+
+}
+  span.a {
+  display: inline;
+  width: 100px;
+  height: 100px;
+  padding: 1px;
+  border: 1px solid black;
+}
+.bottom {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding-left: 150px ;
+      }
+
+    </style>
+</head>
+
+<body>
+<div class="landscapePage">
+
+  <table width="100%" style="border-style: none;">
+    <tr>
+      <td style="text-align:left;border-style: none;"><img src="../pdf-resources/images/logo.png" /></td>
+      <td style="text-align:left;border-style: none;">
+        <h3><span class="box"><strong>Abstract of Financial Bid Opening of Civil Works Tender - OIIPCRA     date</strong></span></h3> <br/>
+        <h6>
+          <span th:text="${bidId}" class="nowrap"></span>
+<!--          <span class="nowrap">Date of Financial Bid Opening:</span>-->
+          <span th:text="${#dates.format(tenderOpeningDate, 'dd-MMM-yyyy')}" class="nowrap">date</span>
+        </h6>
+      </td>
+
+    </tr>
+  </table>
+  <hr/>
+  <strong>Agency: </strong> <span style="color: darkred;">Kanhaiyalal Agarwal Special-Class Contractor </span>                                  <strong></strong> Name of Work:               <span style="color: darkred;"> Constricto of wil Works and CAD.WM O MIPs in Balacore District</span>
+  <hr/>
+  <br/>
+  <div class="row">
+    <div class="column left">
+
+      <table class="table1" cellspacing="0" >
+        <tr>
+<!--          th:each="data,iterator : ${bidderDataSheetInfo}"  th:text = "${EngineerDatabase[0].circleName}"-->
+          <td>ID:</td>
+          <td style="text-align: right;" colspan="2">  <div class="box1" style="float: right;" th:text = "${bidderDataSheetInfo[0].id}"></div> </td>
+        </tr>
+        <tr>
+          <td>Bid ID :</td>
+          <td style="text-align: right;" colspan="2"><div class="box1" style="float: right;" th:text = "${bidderDataSheetInfo[0].bidId}"></div></td>
+        </tr>
+        <tr>
+          <td>Bidding Type</td>
+          <td style="text-align: right;" colspan="2"><div class="box1" style="float: right;" th:text = "${bidderDataSheetInfo[0].biddingType}"></div></td>
+        </tr>
+        <tr>
+          <td>Date of opening of tender</td>
+          <td style="text-align: right;" colspan="2"><div class="box1" style="float: right;" th:text = "${bidderDataSheetInfo[0].tenderOpeningdateChar}"></div></td>
+        </tr>
+        <tr>
+          <td>Name Of Work</td>
+          <td style="text-align: right;" colspan="2"><div class="box1" style="float: right;" th:text = "${bidderDataSheetInfo[0].nameOfWork}"></div> </td>
+        </tr>
+        <tr>
+          <td>Work ID:</td>
+          <td style="text-align: right;" colspan="2"><div class="box1" style="float: right;" th:text = "${bidderDataSheetInfo[0].workId}"></div></td>
+        </tr>
+        <tr>
+          <td>Scheme of funding:</td>
+          <td style="text-align: right;" colspan="2"><div class="box1" style="float: right;" th:text = "${bidderDataSheetInfo[0].projectName}"></div></td>
+        </tr>
+        <tr>
+          <td>Work Sl No in TCN:</td>
+          <td style="text-align: right;" colspan="2"><div class="box1" style="float: right;" th:text = "${bidderDataSheetInfo[0].workSlNoInTcn}"></div></td>
+        </tr>
+        <tr>
+          <td>Amount put to tender:</td>
+          <td style="text-align: right;" colspan="2"><div class="box1" style="float: right;" th:text = "${bidderDataSheetInfo[0].tenderAmount}"></div></td>
+        </tr>
+        <tr>
+          <td>Paper Cost Specified:</td>
+          <td style="text-align: right;" colspan="2"><div class="box1" style="float: right;" th:text = "${bidderDataSheetInfo[0].paperCost}"></div></td>
+        </tr>
+        <tr>
+          <td>EMD to be Deposited:</td>
+          <td style="text-align: right;" colspan="2"><div class="box1" style="float: right;" th:text = "${bidderDataSheetInfo[0].emdToDeposit}"></div></td>
+        </tr>
+        <tr>
+          <td>Period of Completion:</td>
+          <td style="text-align: right;" colspan="2"><span>    <div class="box1" style="float: right;" th:text = "${bidderDataSheetInfo[0].timeOfCompletion}"> Days</div></span></td>
+        </tr>
+        <tr>
+          <td>Name of District:</td>
+          <td style="text-align: right;" colspan="2"><div class="box1" style="float: right;"></div></td>
+        </tr>
+        <tr>
+          <td>Name of MI Division:</td>
+          <td style="text-align: right;" colspan="2"><div class="box1" style="float: right;"></div></td>
+        </tr>
+        <tr>
+          <td>Name of Block:</td>
+          <td style="text-align: right;" colspan="2"><div class="box1" style="float: right;"></div></td>
+        </tr>
+        <!-- <tr>
+            <td>Magazzini Alimentari Riuniti</td>
+            <td>Giovanni Rovelli</td>
+            <td>Italy</td>
+        </tr> -->
+
+
+      </table>
+
+    </div>
+    <div class="column middle" >
+      <table class="table2">
+        <h2> 1. BIDDER DETAILS VALIDITY </h2>
+        <tr>
+          <td>Agency Name:</td>
+          <td style="text-align: right;" colspan="1"><div class="box1" style="float: right;" th:text = "${bidderDataSheetInfo[0].agencyName}"></div></td>
+        </tr>
+        <tr>
+          <td>Class of License:</td>
+          <td style="text-align: right;" colspan="1"><span><div class="box1" style="float: right;" th:text = "${bidderDataSheetInfo[0].licenseClass}"></div>  <div class="box1" style="float: right;">Gen</div></span></td>
+        </tr>
+        <tr>
+          <td>License Validity:</td>
+          <td style="text-align: right;" colspan="1"><span><div class="box1" style="float: right;" th:text = "${bidderDataSheetInfo[0].licenseExpiring}"></div>    <div class="box1" style="float: right;">License OK</div></span></td>
+        </tr>
+        <tr>
+          <td>Bidder Category:</td>
+          <td style="text-align: right;" colspan="1"><div class="box1" style="float: right;"></div></td>
+        </tr>
+        <tr>
+          <td>GST IN:</td>
+          <td style="text-align: right;" colspan="1"><div class="box1" style="float: right;" th:text = "${bidderDataSheetInfo[0].gstIn}"></div></td>
+        </tr>
+        <tr>
+          <td>Mobile No:</td>
+          <td style="text-align: right;" colspan="1"><div class="box1" style="float: right;" th:text = "${bidderDataSheetInfo[0].contactNo}"></div></td>
+        </tr>
+        <tr>
+          <td>Affidavit Validity:</td>
+          <td style="text-align: right;" colspan="1"><div class="box1" style="float: right;"></div></td>
+        </tr>
+        <tr>
+          <td>Paper Cost Submitted:</td>
+          <td style="text-align: right;" colspan="1"><span><div class="box1" style="float: right;" th:text = "${bidderDataSheetInfo[0].paperCost}"></div>      <div class="box1" style="float: right;">-</div></span></td>
+        </tr>
+        <tr>
+          <td>Paper Cost Validity:</td>
+          <td style="text-align: right;" colspan="1"><div class="box1" style="float: right;"></div></td>
+        </tr>
+        <tr>
+          <td>EMD Deposited:</td>
+          <td style="text-align: right;" colspan="1"><span><div class="box1" style="float: right;" th:text = "${bidderDataSheetInfo[0].emdToDeposit}"></div>    <div class="box1" style="float: right;"> Online</div></span></td>
+        </tr>
+        <tr>
+          <td>EMD Validity:</td>
+          <td style="text-align: right;" colspan="1"><div class="box1" style="float: right;"></div></td>
+        </tr>
+      </table>
+
+      <table class="table3">
+        <h2> 2. COMPLETION OF SIMILAR TYPE OF WORK VALUED (Lakh Rs. <span style="color: blue;"> 388.91 </span>) </h2>
+        <tr>
+          <td>Similar Work Value for:</td>
+          <td style="text-align: left;" colspan="5">
+            <input type="text" value="2015-16"    class="box1"   style="width: 18%;"/>
+            <input type="text" value="2016-17"    class="box1"   style="width: 18%; color: red;"/>
+            <input type="text" value="2017-18"    class="box1"   style="width: 28%;"/>
+            <input type="text" value="2018-19"    class="box1"   style="width: 28%;"/>
+          </td>
+        </tr>
+        <tr>
+          <td>Min Agmt Value(Lakh Rs.):</td>
+          <td style="text-align: left;" colspan="5">
+            <input type="text" value="2015-16"  class="box1"    style="width: 18%;"/>
+            <input type="text" value="2016-17"  class="box1"    style="width: 18%;"/>
+            <input type="text" value="2017-18"  class="box1"    style="width: 30%;"/>
+            <input type="text" value="2018-19"  class="box1"    style="width: 28%;"/>
+          </td>
+        </tr>
+        <tr>
+          <td>Similar Work Executed Year/Agmt Amount:</td>
+          <td >
+
+            <input type="text" value="2016-17"  class="box1"    style="width: 18%;"/>
+            <input type="text" value="559.04"   class="box1"   style="width: 18%;"/>
+          </td>
+        </tr>
+        <tr>
+          <td>Amount of Work Executed out of the above:</td>
+          <td colspan="1">
+            <input type="text" value="452.91"  class="box1"   style="width: 18%;"/>
+            <input type="text" value="81.0%"   class="box1"   style="width: 18%;"/>
+          </td>
+        </tr>
+        <tr>
+          <td>Similar Work Experience:</td>
+          <td style="text-align: left;" colspan="1">
+            <input type="text" value="Not Qualified-2" class="box1" style=" color: rgb(240, 13, 13); font-weight: bolder;"/>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="column right">
+      <table class="table4">
+        <h2> 3. ANNUAL FINANCIAL TURNOVER in Lakh Rs. <span style="color: blue;"> 388.91 </span> </h2>
+        <tr>
+          <td>Turnover Years:</td>
+          <td style="text-align: left;" colspan="5">
+            <input type="text" value="2015-16"  class="box1"    style="width: 18%;"/>
+            <input type="text" value="2017-18"  class="box1"   style="width: 18%;"/>
+            <input type="text" value="2016-17"  class="box1"    style="width: 18%; color: red;"/>
+            <input type="text" value="2018-19"  class="box1"    style="width: 18%; "/>
+          </td>
+        </tr>
+        <tr>
+          <td>Turnover Required:</td>
+          <td style="text-align: left;" colspan="1">
+            <input type="text" value=""   class="box1"   style="width: 18%;"/>
+            <input type="text" value=""   class="box1"   style="width: 18%;"/>
+            <input type="text" value=""   class="box1"   style="width: 18%;"/>
+            <input type="text" value=""   class="box1"   style="width: 28%;"/>
+          </td>
+        </tr>
+        <tr>
+          <td>Turnover Available:</td>
+          <td style="text-align: left;" colspan="1">
+            <input type="text" value="76"  class="box1"    style="width: 18%; "/>
+            <input type="text" value="65.5" class="box1"     style="width: 18%; "/>
+            <input type="text" value="66.78" class="box1"     style="width: 18%; "/>
+            <input type="text" value="788.7"  class="box1"   style="width: 28%; "/>
+          </td>
+        </tr>
+        <tr>
+          <td>Eqivalent:</td>
+          <td style="text-align: left;" colspan="1">
+            <input type="text" value="56" class="box1"     style="width: 18%; "/>
+            <input type="text" value="786" class="box1"     style="width: 18%;"/>
+            <input type="text" value="543"  class="box1"    style="width: 18%; color: red; "/>
+            <input type="text" value="56"    class="box1"  style="width: 28%; "/>
+          </td>
+        </tr>
+        <tr>
+          <td>Turnover Maximum:</td>
+          <td style="text-align: left;" colspan="1">
+            <input type="text" value="567.55"  class="box1"    style="width: 18%; font-weight: bolder;"/>
+            <input type="text" value="2017-18" class="box1"     style="width: 18%; font-weight: bolder;"/>
+
+          </td>
+        </tr>
+        <tr>
+          <td>Financial Turnover:</td>
+          <td style="text-align: left;" colspan="1">
+            <input type="text" value="Qualified-3" class="box1"  style=" font-weight: bolder;"/>
+          </td>
+        </tr>
+      </table>
+      <table class="table5">
+        <h2> 4. AVAILABILITY OF LIQUID ASSETS (3 Months) in Lakh Rs. <span style="color: blue;"> 98.21 </span> </h2>
+        <tr>
+
+          <td>Name of the Bank:</td>
+          <td style="text-align: left;" colspan="2">
+            <input type="text"  value="UNION BANK OF INDIA" class="box1" style="width: 18%;"Z/>
+          </td>
+        </tr>
+        <tr>
+          <td>Amount of Credit Rs.:</td>
+          <td style="text-align: left;" colspan="1">
+            <input type="text" value="978.20" class="box1"  />
+          </td>
+        </tr>
+        <tr>
+          <td>Amount of Liquidity Rs.:</td>
+          <td style="text-align: left;" colspan="1">
+            <input type="text" value="0.00" class="box1"/>
+          </td>
+        </tr>
+        <tr>
+          <td>Total Liquid Assets Rs.:</td>
+          <td style="text-align: left;" colspan="1">
+            <input type="text" value="567.89" class="box1" style="font-weight: bolder;"/>
+          </td>
+        </tr>
+        <tr>
+          <td>Availability of Credit:</td>
+          <td style="text-align: left;" colspan="1">
+            <input type="text" value="Qualified-4" class="box1" style=" font-weight: bolder;"/>
+          </td>
+        </tr>
+        <tr>
+          <td>Bid Eligibility:</td>
+          <td style="text-align: left;" colspan="1">
+            <input type="text" value="Not Eligible" class="box1" style=" color: red; font-weight: bolder; "/>
+
+          </td>
+        </tr>
+      </table>
+
+    </div>
+  </div>
+
+
+</div>
+<br/>
+   <p style="float: right;" class="bottom">Executive Engineer &nbsp; (Mon),&nbsp;OIIPCRA</p>
+
+</body>
+
+</html>

@@ -1,0 +1,459 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" >
+
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document</title>
+  <style>
+        body {
+    text-align: justify;
+    text-justify: inter-word;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    padding-top: 22px;
+    width: 1000px;
+    width: auto;
+    margin-right: auto;
+    margin-left: auto;
+    *zoom: 1;
+}
+.container:before,
+.container:after {
+    display: table;
+    line-height: 0;
+    content: "";
+}
+
+.container:after {
+    clear: both;
+}
+
+@page {
+    @top-right {
+        content:  "BID EVALUATION REPORT PART II  &nbsp; &nbsp; Page " counter(page) ;
+        }
+}
+
+
+
+@page {
+   @bottom-right {
+        content:  element(footer);
+    }
+  }
+
+  @page {
+    size: A4;
+}
+
+
+div.footer {
+    display: block;
+    position: running(footer);
+}
+
+div.topright {
+    position: running(topright);
+}
+
+
+<!--.topright {-->
+<!--  position: absolute;-->
+<!--  right: 120px;-->
+<!--  font-size: 15px;-->
+<!--}-->
+
+div.footer2 {
+    display: block;
+    position: running(footer2);
+}
+
+.new-page {
+    page-break-before: always;
+    }
+
+
+th {
+  border:1px solid black;
+}
+
+.th2{
+  border-bottom: 1px solid #ddd;
+}
+
+.text{
+   text-align: justify;
+}
+
+.table1{
+   border-collapse:collapse;
+}
+
+
+
+
+
+
+
+
+</style>
+</head>
+<body>
+<div class="page1" style="font-family:sans-serif;">
+  <div id="footer" style="" class='footer'>
+
+    <p style="float: left; margin-bottom:10px;"> <hr style="width:250px"/><i th:text="${financialBidEvaluationDto[0].bidIdentification} +  '          ' + ${financialBidEvaluationDto[0].workId}"></i></p>
+  </div>
+
+<!--  <div class="topright" style="background-color: grey; "><span> BID EVALUATION REPORT PART II</span></div>-->
+  <br/>
+  <br/>
+<!--  <p class="top-right" style="text-align:right;border-style: none; font-ize: 10px;">BID EVALUATION REPORT PART II</p>-->
+  <p style="text-align:center;border-style: none;"><h2><strong> DEPARTMENT OF WATER RESOURCES</strong></h2></p> <br/>
+  <p style="text-align:center;border-style: none;"><img src="../pdf-resources/images/govtp-logo.png"/></p>
+  <p style="text-align:center;border-style: none;">
+    <strong> ODISHA INTEGRATED IRRIGATION PROJECT <br/>FOR CLIMATE RESILIENT AGRICULTURE <br/>(OIIPCRA) </strong> <br/>
+  </p>
+  <p style="text-align:center;border-style: none;"><strong>WORLD BANK PROJECT ID: P163533<br/><br/><br/>
+    BID EVALUATION REPORT FOR WORKS-PART 2<br/>(Financial Qualification Part of Bids)</strong></p><br/>
+
+<!--  <p class="test" style="text-align:center;border-style: none;">Description of Works-->
+<!--    <span><strong>: <strong  th:text="${financialBidEvaluationDto.nameOfWork}"></strong></strong></span></p>-->
+<!--  <p class="test" style="border-style: none; margin-left: 15%;">BID Identification  <span><strong>: <strong  th:text="${financialBidEvaluationDto.bidIdentification}"></strong>   &nbsp; &nbsp;  &nbsp;   (NCB)</strong></span></p>-->
+<!--  <p class="test" style="border-style: none; margin-left: 15%;">Works/Package No. <span><strong>: <strong  th:text="${financialBidEvaluationDto.workId}"></strong> - <strong  th:text="${financialBidEvaluationDto.distName} + '  District '"></strong></strong></span></p>-->
+<!--  <p class="test" style="border-style: none; margin-left: 15%;">Estimated Cost(INR) <span><strong>:<img src="../pdf-resources/images/rupee.png" width="8px"/> <strong  th:text="${financialBidEvaluationDto.estimatedCost}"></strong></strong></span></p>-->
+
+
+  <table class="table1" style="width:100%; padding-left: 160px; 1px solid #696767eb !important;">
+    <tr>
+      <td>Description of Works</td>
+      <td>: <strong  th:text="${financialBidEvaluationDto[0].nameOfWork}"></strong></td>
+    </tr>
+
+    <tr>
+      <td>Bid Identification</td>
+      <td>: <strong  th:text="${financialBidEvaluationDto[0].bidIdentification} + ' (NCB) ' "></strong></td>
+    </tr>
+
+    <tr>
+      <td>Work/Package No.</td>
+      <td>: <strong  th:text="${financialBidEvaluationDto[0].workId} + ' - ' +  ${financialBidEvaluationDto[0].distName} + '  District ' "></strong></td>
+    </tr>
+
+    <tr>
+      <td>Estimated Cost (INR)</td>
+      <td>: <img src="../pdf-resources/images/rupee.png" width="8px"/> <strong  th:text="${financialBidEvaluationDto[0].estimatedCost}"></strong></td>
+    </tr>
+  </table>
+
+  <p style="text-align:center;border-style: none; padding-top:275px;"><strong>ODISHA COMMUNITY TANK DEVELOPMENT AND MANAGEMENT SOCIETY (OCTDMS)<br/>
+    7th Floor, Rajiv Bhawan,<br/>
+    Bhubaneswar-751001, Ph. 0674-2542252.</strong></p>
+
+  <br/>
+  <br/>
+
+  <p class="new-page"></p>
+
+
+  <div class="footer2">
+
+    <p style="float: right;"> <i>BID EVALUATION REPORT OF PART-II</i></p>
+
+  </div>
+
+  <div class="page1">
+    <!--        <p style="text-align:center;border-style: none;"><h3>BID EVALUATION REPORT OF PART-1 OF BIDS</h3>-->
+    <p style="text-align: center"><strong>BID EVALUATION REPORT OF PART-II OF BIDS<br/>(National Competitive Bidding through e-procurement system)</strong></p>
+    <p>This Bid Evaluation Report for Part-2 of the bids is in continuation of the Bid Evaluation Report for
+      Part-1 of the bids, which was approved by the Review Committee for Procurement held on <strong th:text="${financialBidEvaluationDto[0].reviewTechBidDate} + '.'"></strong></p>
+    <p><strong>1.0 &nbsp; Scope of Contract and Estimated Cost:</strong></p>
+    <p>The work covered under the Bid is for <strong th:text="${financialBidEvaluationDto[0].nameOfWork}"></strong> <strong>in</strong>
+      <strong th:text="${financialBidEvaluationDto[0].distName} + '  District '"></strong> <strong>UNDER OIIPCRA in <span th:text="${financialBidEvaluationDto[0].distName} + '  District '"></span>in the Package ID : </strong> <strong th:text="${financialBidEvaluationDto[0].workId}" ></strong><br/><br/>
+      Reference Bid ID  <strong>: </strong><strong th:text="${financialBidEvaluationDto[0].bidIdentification}"></strong><br/><br/>
+      The estimated cost of the work is <strong><img src="../pdf-resources/images/rupee.png" width="8px"/> <strong  th:text="${financialBidEvaluationDto[0].estimatedCost}"></strong></strong></p>
+    <p><strong>2.0 &nbsp; Background prior to opening of Part 2 Bids</strong></p>
+    <p>Bids for the above referred work were invited through e-tendering system under National
+      Competitive Bidding procedure, using the bidding documents based on the Model Bidding
+      Documents cleared by OIIPCRA and World Bank. In accordance with the provisions of the bidding
+      documents, Part 1 Bid (Technical Qualification part of bid) was opened online on <strong th:text="${financialBidEvaluationDto[0].techBidDate} + '.'"></strong> As
+      per evaluation of Part 1 of bids approved by the Review Committee for Procurements of
+      OCTDMS headed by the Addl. Project Director (Engg)-OIIPCRA (Competent Authority), <following></following>
+      bidders were declared as having qualified to be eligible for opening of Part 2 bids in terms of ITB
+      Clause-3.<br/><br/>
+
+<!--      <span style="margin-left: 25px">1. &nbsp;  <strong>Girish Chandra Sahu</strong></span><br/><br/>-->
+
+    <table class="table1" style="width:100%;font-weight: bold; 1px solid #696767eb !important;">
+      <tr class="table1" th:each="data,iterator : ${financialBidEvaluationDto}">
+        <td th:text="${iterator.index+1}"></td>
+        <td th:text = "${data.agencyName}"></td>
+      </tr>
+    </table>
+     <br/>
+
+      The result of evaluation of Part 1 bids, as approved by Review Committee of OCTDMS headed by
+      the Addl. Project Director (Engg)-OIIPCRA (The Competent Authority) was uploaded on the EPROC SYSTEM on <strong th:text="${financialBidEvaluationDto[0].reviewTechBidDate} "></strong>, allowing a period of Seven working days to the bidders to submit
+      complaints, if any. However, no complaints on the evaluation of Part-I bids were received. Part
+      2 bids (Financial Part of bids) only of the above-mentioned qualified bidders were opened by the
+      nominated representatives of the OCTDMS/ SPMU on <strong th:text="${financialBidEvaluationDto[0].finBidOpeningDate} "></strong><strong>  at 11.00 hrs.</strong> The specified
+      date and time of opening of Part 2 of bids was informed through e-mail/notice on the eProcurement website. The summary of opening of Part 2 bids was prepared and placed in the
+      SPMU level Review Committee for Procurement on <strong th:text="${financialBidEvaluationDto[0].reviewFinBidDate} "></strong> which is attached as <strong>Attachment - 1.</strong></p>
+
+    <p><strong>3.0 &nbsp; Preliminary Evaluation of bids:</strong></p>
+    <p>3.1 &nbsp; Bid prices as quoted by the bidders are tabulated below:</p>
+<!--    <hr style="width:93% "/>-->
+
+
+    <table class="table1" style="width:100%; 1px solid #696767eb !important;">
+      <tr style="th2">
+        <th >Sl</th>
+        <th >Name of Agency</th>
+        <th >Bid Price (INR)</th>
+        <th >% Excess/ Less</th>
+      </tr>
+      <tr class="table1" th:each="data,iterator : ${financialBidEvaluationDto}">
+        <td th:text="${iterator.index+1}" ></td>
+        <td th:text = "${data.agencyName}"></td>
+        <td><img src="../pdf-resources/images/rupee.png" width="8px"/><span th:text="${data.bidPrice}"></span></td>
+        <td th:text = "${data.percentageExcessLess} + ' % ' + ${data.excessLess}"></td>
+      </tr>
+    </table>
+
+    <hr style="width:93% "/>
+
+    <p>The comparative statement for the bids downloaded from e-procurement system is attached as
+      <strong>Attachment-2.</strong></p>
+
+    <p>3.2 &nbsp; Responsiveness to Commercial Conditions:</p>
+
+    <p>None of the bidders have stipulated any deviations from the commercial conditions of the
+      bidding documents, and all the bids are therefore; considered responsive to the commercial
+      conditions.</p>
+
+    <p>3.3 &nbsp; Responsiveness to Technical Requirements.</p>
+
+    <p> The technical responsiveness of bid has been examined by the Review Committee for Procurement with respect to the bid conditions which were not covered during
+      evaluation of Part 1 bids, i.e., in respect of Priced Bill of Quantities, and Technical Specifications, in accordance with ITB Clause-3.
+      The bids are compliant with the Technical Specifications/ Requirements and considered technically responsive. Bid of the bidders at Paragraph-3
+      above are determined to be substantially responsive to the commercial and technical provisions of the bidding documents.</p>
+
+
+    <p><strong>4.0 &nbsp; Detailed Evaluation of the Substantially Responsive Bids</strong></p>
+    <p class="text">4.1 &nbsp;  The <span th:text="${newList[0].awardTypeName} "></span> bid that of <strong>M/s <span th:text="${newList[0].bidderNameClass} "></span> Contractor.</strong>  found to be
+                   <strong><span th:text="${newList[0].percentageExcessLess + '% ' }  "></span> <span th:text="${newList[0].excess} "></span> </strong> the technical sanctioned estimate cost put to tender.</p>
+
+    <p class="text">4.2 &nbsp;  There are no such conditions which warrant the loading of the bid price. No other specific evaluation criterion
+                   has been stipulated in the bid document. </p>
+
+    <p class="text">4.3 &nbsp;  The bid is evaluated and otherwise found to be substantially responsive. The Evaluation Committee discussed and concluded reasonableness of the bidder’s price and
+                   recommended <strong> for acceptance.</strong></p>
+
+    <p><strong>5.0 &nbsp; Comments on the Unbalanced Bid Items</strong></p>
+    <p>The bid has no items of works where the quoted rates by the bidder is considered to be unbalanced.</p>
+
+    <p><strong>6.0 &nbsp; Computation of Bid Capacity of the lowest responsive bidder</strong></p>
+    <p class="text">6.1 &nbsp; The bid capacity of bidder is computed following the limitations provided in ITB Clause -3 (b) for
+      amount of Annual Financial Turnover and Clause-3 (g) for Availability of liquid assets and/or
+      credit facilities. Further, according to clause-3, when a bidder participates in multiple bids, the
+      bidder has to demonstrate the qualifications for Annual Turnover (3(b)) and Availability of liquid
+      assets (3(g)) to the cumulative value of the packages. Further, the balance bid capacity after
+      award of work is computed as under:<br/><br/>
+
+      <strong>Maximum Bid Capacity = <span th:text="${maximumBid}"></span>  x Max Annual Turnover x Period for Completion in Years.<br/>
+      Balance Bid Capacity = Max Bid Capacity - 2 x Estd. Cost of Work</strong></p>
+
+     <p class="text">6.2 &nbsp; The bidder has participated and evaluated as Lowest Responsive bidder in <strong><span th:text="${Nos}"></span></strong> of the
+       packages in the Package IDs: <strong><span th:text="${workIdsName}"></span>.</strong><br/></p>
+
+     <p><strong>The bid capacity is arrived as indicated in the table below:<span style="margin-left: 130px;"><i>(Amount in Lakh INR)</i></span></strong></p>
+
+
+    <table class="table1" style="width:100%; text-align: center !important;">
+      <thead style="background-color: #fffff; color: black;" >
+      <tr >
+        <th>Package ID</th>
+        <th>Estimated Cost</th>
+        <th>Amount of Bid</th>
+        <th>Max. Annual Financial Turnover</th>
+        <th>Max.Bid Capacity</th>
+        <th>Balance Bid Capacity</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr th:each="data,iterator:${financialBid}">
+
+        <td th:text="${data.packageId}"></td>
+        <td><img src="../pdf-resources/images/rupee.png" width="8px"/><span th:text="${data.estimated}"></span></td>
+        <td><img src="../pdf-resources/images/rupee.png" width="8px"/><span th:text="${data.amountOfBid}"></span></td>
+        <td><img src="../pdf-resources/images/rupee.png" width="8px"/><span th:text="${data.maxAnnualTurnOver}"></span></td>
+        <td><img src="../pdf-resources/images/rupee.png" width="8px"/><span th:text="${data.maxBidCapacityPdfValue}"></span></td>
+        <td><img src="../pdf-resources/images/rupee.png" width="8px"/><span th:text="${data.balanceBidCapacityPdfValue}"></span></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <br/>
+    <br/>
+
+    <hr style="width:100% "/>
+
+    <p class="new-page"></p>
+
+    <p>6.3 &nbsp;  As found from the tally table at Para-6.2 above, The Bidder has sufficient Bid Capacity to get
+      awarded with the responsive bid with work ID: <strong><span th:text="${newList[0].workId} "></span> - <span th:text="${newList[0].distName}"></span></strong> District.</p>
+
+    <p><strong>The bid capacity for Bidder's bid option computed as below:<span style="margin-left: 120px;"><i>(Amount in Lakh INR)</i></span></strong></p>
+
+    <table class="table1" style="width:100%; text-align: center !important;">
+      <thead style="background-color: #fffff; color: black;" >
+      <tr >
+        <th>Package ID</th>
+        <th>Estimated Cost</th>
+        <th>Amount of Bid</th>
+        <th>Max. Annual Financial Turnover</th>
+        <th>Max.Bid Capacity</th>
+        <th>Balance Bid Capacity</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr th:each="data,iterator:${financialBid}">
+
+        <td th:text="${data.packageId}"></td>
+        <td><img src="../pdf-resources/images/rupee.png" width="8px"/><span th:text="${data.estimated}"></span></td>
+        <td><img src="../pdf-resources/images/rupee.png" width="8px"/><span th:text="${data.amountOfBid}"></span></td>
+        <td><img src="../pdf-resources/images/rupee.png" width="8px"/><span th:text="${data.maxAnnualTurnOver}"></span></td>
+        <td><img src="../pdf-resources/images/rupee.png" width="8px"/><span th:text="${data.maxBidCapacityPdfValue}"></span></td>
+        <td><img src="../pdf-resources/images/rupee.png" width="8px"/><span th:text="${data.balanceBidCapacityPdfValue}"></span></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <br/>
+    <br/>
+    <hr style="width:100% "/>
+
+    <p><strong>7.0 &nbsp; Recommendations of Evaluation Committee:</strong></p>
+    <p>The Review Committee for Procurement of OCTDMS, recommends to award the Contract for
+      the work Package : <strong><span th:text="${newList[0].workId} "></span> - <span th:text="${newList[0].distName}"></span></strong> District infavour of the <span th:text="${newList[0].awardTypeName} "></span> Bidder M/s
+      <span th:text="${newList[0].bidderNameClass} "></span> Contractor. for a bid amount of <strong><img src="../pdf-resources/images/rupee.png" width="8px"/> <span th:text="${newList[0].bidPrice}"></span></strong> which
+      is <strong><span th:text="${newList[0].percentageExcessLess + '% ' }  "></span> <span th:text="${newList[0].excessLess}"></span></strong> based on the prevailing Schedule of Rates.</p>
+
+    <p><strong>8.0 &nbsp; Abstract of Important Features of the Tender Proceedings:</strong></p><br/>
+
+    <table style="width:100%;!important">
+
+      <tr>
+        <td>i.</td>
+        <td>Name of the Awarded</td>
+        <td><strong>: M/s  <span th:text="${newList[0].bidderNameClass} "></span>Contractor.</strong></td>
+      </tr>
+
+      <tr>
+        <td>ii.</td>
+        <td>Tender Awarded in favour of</td>
+        <td><strong><span th:text="${newList[0].awardTypeName} "></span>  bid.</strong></td>
+      </tr>
+
+      <tr>
+        <td>iii.</td>
+        <td>Estimated Amount put to tender</td>
+        <td><strong>: <img src="../pdf-resources/images/rupee.png" width="8px"/><span th:text="${newList[0].estimatedCost}"></span></strong></td>
+      </tr>
+
+      <tr>
+        <td>iv.</td>
+        <td>Rate Quoted by the Bidder</td>
+        <td><strong>: <img src="../pdf-resources/images/rupee.png" width="8px"/><span th:text="${newList[0].bidPrice}"></span>       @<span th:text="${newList[0].percentageExcessLess + '% '}"></span><span th:text="${newList[0].excessLess}"></span></strong></td>
+      </tr>
+
+      <tr>
+        <td>v.</td>
+        <td>Mobilisation advance(upto 5%)</td>
+        <td><strong>: <img src="../pdf-resources/images/rupee.png" width="8px"/><span th:text="${newList[0].mobilisationAdvance}"></span></strong></td>
+      </tr>
+
+      <tr>
+        <td>vi.</td>
+        <td>Equipment advance(upto 10%)</td>
+        <td><strong>: <img src="../pdf-resources/images/rupee.png" width="8px"/><span th:text="${newList[0].equipmentAdvance}"></span></strong></td>
+      </tr>
+
+      <tr>
+        <td>vii.</td>
+        <td>Performance Security(@ 2.5%)</td>
+        <td><strong>: <img src="../pdf-resources/images/rupee.png" width="8px"/><span th:text="${newList[0].performanceSecurity}"></span></strong></td>
+      </tr>
+
+      <tr>
+        <td>viii.</td>
+        <td>Addl Performance Security if any</td>
+        <td><strong>:  <img src="../pdf-resources/images/rupee.png" width="8px"/> <span th:text="${newList[0].addPerfSecurity}"></span></strong></td>
+      </tr>
+
+      <tr>
+        <td>ix.</td>
+        <td>Retention Money @2.5%</td>
+        <td><strong>: Gross value of Each Invoice</strong></td>
+      </tr>
+
+      <tr>
+        <td>x.</td>
+        <td>Date of Bid Validity up to</td>
+        <td><strong>: <span th:text="${newList[0].bidValidityUpto}"></span></strong></td>
+      </tr>
+
+      <tr>
+        <td>xi.</td>
+        <td>MI Division-in-Charge of Work</td>
+        <td><strong>: <span th:text="${newList[0].miDivisionInCharge}"></span></strong></td>
+      </tr>
+
+
+
+
+    </table>
+
+    <hr style="width:100% "/>
+    <br/>
+    <br/>
+
+
+    <table style="width:100%;!important; text-align:center;line-height:0.4; ">
+      <tr>
+        <td>
+          <hr style="width:80% "/>
+          <p>EE(Procurement)</p>
+        </td>
+
+        <td>
+          <hr style="width:80% "/>
+          <p>(Project Finance Officer)</p>
+        </td>
+
+        <td>
+          <hr style="width:80%"/>
+          <p>Addl.Project Director(Engg)</p>
+        </td>
+
+      </tr>
+    </table>
+
+    <p><strong>9.0 &nbsp; Decision of Bid Accepting Authority:</strong></p>
+    <p>Bid Accepting Authority has accepted the recommendations of the Review Committee for Procurement.<br/><br/></p>
+
+    <p><span style="margin-left: 70px;"><strong>Bid Accepting Authority:</strong></span></p><br/><br/><br/>
+
+    <p style="margin-left: 70px;"><strong>Project Director, OCTDMS <span style="margin-left:20px;">Date <strong th:text="${str}"></strong></span></strong></p> <br/><br/>
+
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr th:if="${EngineerDatabase[0].circleName}!=null">
+        <td><p>Present</p></td>
+    </tr>
+    <tr th:unless="${EngineerDatabase[0].circleName}!=null">
+        <td><p>Not Present</p></td>
+    </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" >
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+    <style>
+        body {
+    text-align: justify;
+    text-justify: inter-word;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    padding-top: 22px;
+    width: 1000px;
+    width: auto;
+    margin-right: auto;
+    margin-left: auto;
+    *zoom: 1;
+}
+.container:before,
+.container:after {
+    display: table;
+    line-height: 0;
+    content: "";
+}
+
+.container:after {
+    clear: both;
+}
+
+@page {
+    @top-right {
+        content: "Page " counter(page) " of " counter(pages);
+    }
+
+}
+
+
+
+@page {
+   @bottom-right {
+        content:  element(footer);
+    }
+  }
+
+  @page {
+    size: A4;
+}
+
+
+div.footer {
+    display: block;
+    position: running(footer);
+}
+
+</style>
+</head>
+<body>
+<div class="page1" style="font-family:sans-serif;">
+    <div id="footer" style="" class='footer'>
+
+        <p style="float: left;"> <hr style="width:250px"/><i>OIIPCRA W2-1/2019 &nbsp; &nbsp; &nbsp; <strong>BAL-03</strong></i></p>
+    </div>
+
+    <p class="top-right" style="text-align:right;border-style: none; font-ize: 10px;">BID EVALUATION REPORT PART 1</p>
+    <p style="text-align:center;border-style: none;"><h3><strong> DEPARTMENT OF WATER RESOURCES</strong></h3></p> <br/>
+    <p style="text-align:center;border-style: none;"><img src="../pdf-resources/images/govtp-logo.png"/></p>
+    <p style="text-align:center;border-style: none;">
+        <strong> ODISHA INTEGRATED IRRIGATION PROJECT <br/>FOR CLIMATE RESILIENT AGRICULTURE <br/>(OIIPCRA) </strong> <br/>
+    </p>
+    <p style="text-align:center;border-style: none;"><strong>WORLD BANK PROJECT ID: P163533</strong><br/><br/><br/>
+    BID EVALUATION REPORT FOR WORKS-PART 1<br/>(Technical Qualification Part of Bids)</p><br/>
+
+    <p class="test" style="text-align:center;border-style: none;">Description of Works :
+    <span><strong>Construction of Civil and CAD-WM Works of MIPs</strong></span></p>
+    <p class="test" style="text-align:center;border-style: none;">BID Identification : <span><strong>OIIPCRA-W2-1/2019   &nbsp; &nbsp;  &nbsp;  &nbsp; (NCB)</strong></span></p>
+    <p class="test" style="text-align:center;border-style: none;">Works/Package No. : <span><strong>Bal-03 - Balasore</strong> District.</span></p>
+    <p class="test" style="text-align:center;border-style: none;">Estimated Cost(INR) : <span><strong><img src="../pdf-resources/images/rupee.png" width="8px"/> 4,51,66,228.55</strong></span></p>
+
+    <p style="text-align:center;border-style: none; padding-top:350px;">ODISHA COMMUNITY TANK DEVELOPMENT AND MANAGEMENT SOCIETY (OCTDMS)<br/>
+        7th Floor, Rajiv Bhawan,<br/>
+        Bhubaneswar-751001, Ph. 0674-2542252.</p>
+
+</div>
+</body>
+</html>

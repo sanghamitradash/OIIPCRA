@@ -1,0 +1,208 @@
+
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+    <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css"/>-->
+    <!--  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"/>-->
+    <!--  <link rel="stylesheet" th:href="@{../pdf-resources/css/bootstrap2.css}"/>-->
+
+    <style>
+        .container {
+            padding-top: 30px;
+             width: 1000px;
+              width: auto;
+              margin-right: auto;
+    margin-left: auto;
+    *zoom: 1;
+        }
+        .container:before,
+.container:after {
+    display: table;
+    line-height: 0;
+    content: ""
+}
+
+.container:after {
+    clear: both
+}
+<!--striped-->
+th, td {
+  text-align: left;
+<!--  padding: 16px;-->
+}
+
+tr:nth-child(even) {
+<!--  background-color: #f2f2f2;-->
+      background-color: #ebf3fc;
+}
+<!--striped-->
+.table {
+    width: 100%;
+    margin-bottom: 20px
+}
+
+
+
+.table th,
+.table td {
+    padding: 8px;
+    line-height: 20px;
+    text-align: center;
+    vertical-align: top;
+    font-family:sans-serif;
+    border-top: 1px solid #ddd
+}
+
+.table th {
+    font-weight: bold
+}
+
+.table thead th {
+    vertical-align: bottom
+}
+
+.table caption+thead tr:first-child th,
+.table caption+thead tr:first-child td,
+.table colgroup+thead tr:first-child th,
+.table colgroup+thead tr:first-child td,
+.table thead:first-child tr:first-child th,
+.table thead:first-child tr:first-child td {
+    border-top: 0
+}
+td {white-space:nowrap}
+
+     @page { size: A4 landscape;}
+
+ @page {
+  @bottom-right {
+    content: "Page " counter(page) " of " counter(pages);
+  }
+}
+
+div.footer {
+    display: block;
+    position: running(footer);
+}
+
+@page {
+        @bottom-left {
+            content: element(footer);
+        }
+    }
+
+
+.table {
+            -fs-table-paginate: paginate;
+        }
+        .rupee{
+    background-position:center;
+    padding-left:15px;
+<!--    padding-top:20px;-->
+    width: 10px;
+    height: 14px;
+    background-image: url('../pdf-resources/images/rupee.png');
+    display:block;
+    background-repeat: no-repeat;
+}
+.child{
+    display: inline-block;
+    padding: 1rem 1rem;
+    vertical-align: middle;
+}
+
+
+        </style>
+</head>
+<body>
+<div class="container">
+
+    <div id="footer" style="" class='footer'>
+        <div class="about-border"></div>
+
+        <p th:text="${getDate.date}"> </p>
+
+    </div>
+
+    <table width="100%">
+        <tr style="text-align : center; !important">
+            <td style="text-align:left;" rowspan="2"><img  src="../pdf-resources/images/logo.png"/></td>
+            <th style="text-align : left; color:blue; font-family:sans-serif; font-size:28px; ">Participant List in NCB ID: RFB     <strong th:text="${Tender.bidId}"></strong>    <span style="margin-left:70px; color:blue">Technical Bid Opened on Dt: <strong th:text="${Tender.techBidDate}"></strong></span>
+            </th>
+            <!--            <td style="margin-left:15%; font-weight: bold; font-size:20px;"><strong>Odisha Community Tank Development and Management Society, Bhubaneswar</strong>-->
+        </tr>
+        <tr style=" background-color:white; text-align:center;"> <th><h2><strong style=" color:black; margin-left:-19px; font-size:30px; font-family:sans-serif; !important" th:text="${officeName}"></strong></h2></th></tr>
+    </table>
+
+
+<!--    <div id="header" class="header" >-->
+<!--        <div style="text-align:left;"><img  src="../pdf-resources/images/logo.png"/></div>-->
+<!--        <div style="text-align:right;">-->
+<!--        <h2 style="text-align : center; font-family:sans-serif;text-size:15px; ">Participant List in NCB ID: RFB  <strong th:text="${Tender.bidId}"></strong>    <span style="margin-left:4%;">Technical Bid Opened on Dt: <strong th:text="${Tender.techBidDate}"></strong></span></h2>-->
+<!--&lt;!&ndash;        <h3><span class="test" style="text-align : center; color:blue; font-family:sans-serif;"><strong th:text="${officeName}"></strong></span></h3>&ndash;&gt;-->
+<!--        <h3><p class="test" style="text-align : center; color:blue; margin-left:% ; font-size:30px; font-family:sans-serif;"><strong th:text="${officeName}"></strong></p></h3>-->
+<!--        </div>-->
+<!--    </div>-->
+
+    <div>
+        <p class="test" style="margin-left:40%" ><strong></strong> <span class="test" style="margin-left:83%"><strong>Amount in Lakh INR</strong></span></p>
+        <table class="table table-striped" style="width:100%;">
+            <thead style="background-color: #457ca3; color: white;" >
+            <tr>
+                <th scope="col">Sl No</th>
+                <th scope="col">TCN Sl No</th>
+                <th scope="col">Package ID</th>
+                <th scope="col">Amount put to tender in Lakh Rs.</th>
+                <th scope="col">Name Of Agency</th>
+                <th scope="col">Class Of Contractor registration</th>
+                <th scope="col">Licence Expires on date</th>
+                <th scope="col">Licence Validity as on the date of tender opening</th>
+                <th scope="col">Emd Validity</th>
+                <th scope="col">Compilation of Similar Type of Work of Agmt valued <span th:text="${stipulation[0].similarWorkValue}"></span>   of amount put to tender</th>
+                <th scope="col">Annual Turnover required @<span th:text="${stipulation[0].annualFinancialTurnover}"></span>  time the value put to tender in Lakh Rs.</th>
+                <th scope="col">Financial TurnOver from civil works available in Lakh Rs.</th>
+                <th scope="col">Financial TurnOver Validity</th>
+                <th scope="col">Credit Facility Availability</th>
+                <th scope="col">Overall Eligibility</th>
+            </tr>
+
+
+            </thead>
+            <tbody>
+            <tr th:each="data,iterator : ${allData}">
+                <td th:text="${iterator.index+1}" ></td>
+                <td th:text = "${data.work_sl_no_in_tcn}"></td>
+                <td style = "text-align:left"><span th:text = "${data.packageId}"></span></td>
+                <td><img src="../pdf-resources/images/rupee.png" width="8px"/><span th:text = "${data.tenderAmount}"></span></td>
+                <td style = "text-align:left" th:text = "${data.agency}"></td>
+                <td style = "text-align:left" th:text = "${data.licenseClass}"></td>
+                <td th:text = "${data.validity}"></td>
+                <td style = "text-align:left" th:text = "${data.license_on_TenderOpening}"></td>
+                <td style = "text-align:left" th:text = "${data.emd_validity}"></td>
+                <td style = "text-align:left" th:text = "${data.completion_work_value_qualified}"></td>
+                <td style = "text-align:right"><img src="../pdf-resources/images/rupee.png" width="8px"/> <span th:text = "${data.turnOver}"></span></td>
+                <td style = "text-align:right"><img src="../pdf-resources/images/rupee.png" width="8px"/> <span  th:text = "${data.maxTurnOver}"></span></td>
+                <td style = "text-align:left" th:text = "${data.financialTurnoverValidity}"></td>
+                <td style = "text-align:left" th:text = "${data.credit_facility_availability}"></td>
+                <td style = "text-align:left" th:text = "${data.overall_bid_validity}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <br/>
+    <br/>
+    <p style="font-family:sans-serif;"><strong>NOTE: BIDs not participated for the Package IDs are not listed here.</strong> </p>
+    <p class="test" style="margin-left:80%; font-family:sans-serif; "><span th:text = "${OfficeData[0].designationName}"></span><span th:text = "${DivName}"></span></p>
+
+
+
+</div>
+</body>
+</html>

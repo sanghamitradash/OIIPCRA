@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" >
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+    <style>
+           .container {
+                    padding-top: 22px;
+                     width: 1000px;
+                      width: auto;
+                      margin-right: auto;
+            margin-left: auto;
+            *zoom: 1;
+                }
+                .container:before,
+        .container:after {
+            display: table;
+            line-height: 0;
+            content: ""
+        }
+
+        .container:after {
+            clear: both
+        }
+
+p{
+font-size:14px;
+}
+
+@page { size: A4 landscape;}
+  div{page-break-inside:avoid}
+
+ @page {
+  @bottom-right {
+    content: "Page " counter(page) " of " counter(pages);
+  }
+}
+
+.table2 thead th {
+    padding: 8px;
+    line-height: 20px;
+    text-align: center;
+    vertical-align: top;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+.table2{
+     border-collapse: collapse;
+
+}
+
+.table2 tbody td{
+      padding: 1px;
+}
+
+.table2 tbody tr:nth-child(odd) {
+      background-color: #ebf3fc;
+
+}
+
+.table1,.table1 thead th,
+.table1 tbody td {
+    padding: 10px;
+    line-height: 20px;
+    text-align: left;
+    vertical-align: top;
+    border-collapse: collapse;
+}
+
+</style>
+</head>
+<body style="font-family:sans-serif;">
+
+<div class="container" >
+    <div class="outset" style="text-align: right; background-color: #50a8d4; width: 100%"><strong>Attachment-5B</strong></div>
+
+
+    <div>
+        <table class="table1" style="width: 100%">
+            <tr>
+                <th>Name of Work</th>
+                <th colspan="4">: <strong  th:text="${technicalBidAttachment[0].nameOfWork}"></strong></th>
+            </tr>
+            <tr>
+                <th>Bid Id</th>
+                <th>: <strong  th:text="${technicalBidAttachment[0].bidIdentification}"></strong></th>
+                <th>Scheme of funding</th>
+                <th>: <strong  th:text="${technicalBidAttachment[0].schemeOfFunding}"></strong></th>
+                <th colspan="2" style="border-top: 1px solid black; border-bottom: 1px solid black;"><strong>Required Achievements in Lakh INR at <span th:text="${finYr.name}"></span></strong></th>
+            </tr>
+            <tr>
+                <th>Name of District</th>
+                <th>: <strong  th:text="${technicalBidAttachment[0].districtName}"></strong></th>
+                <th>Amount put to tender</th>
+                <th>: <img src="../pdf-resources/images/rupee.png" width="8px"/> <strong  th:text="${technicalBidAttachment[0].charTenderAmount}"></strong></th>
+                <th>3a. Similar Type Work Value</th>
+                <th>: <img src="../pdf-resources/images/rupee.png" width="8px"/> <strong  th:text="${similar[0].value}"></strong><strong></strong></th>
+            </tr>
+            <tr>
+                <th>Work_ID</th>
+                <th>: <strong  th:text="${technicalBidAttachment[0].workId}"></strong></th>
+                <th>Paper Cost Specified</th>
+                <th>: <img src="../pdf-resources/images/rupee.png" width="8px"/> <strong  th:text="${technicalBidAttachment[0].paperCostSpecified}"></strong></th>
+                <th>3b. Min annul Turnover</th>
+                <th>: <img src="../pdf-resources/images/rupee.png" width="8px"/> <strong  th:text="${technicalBidAttachment[0].charAnnualTurnover}"></strong></th>
+            </tr>
+            <tr>
+                <th>Work Sl No in TCN</th>
+                <th>: <strong  th:text="${technicalBidAttachment[0].workSlNoInTcn}"></strong></th>
+                <th>EMD to be deposited</th>
+                <th>: <img src="../pdf-resources/images/rupee.png" width="8px"/> <strong  th:text="${technicalBidAttachment[0].emdToBeDeposited}"></strong></th>
+                <th>3f. Amount of Credit/Liquidity</th>
+                <th>: <img src="../pdf-resources/images/rupee.png" width="8px"/> <strong  th:text="${technicalBidAttachment[0].creditFacilityAvailable}"></strong></th>
+            </tr>
+            <tr>
+                <th>Date of opening of tender</th>
+                <th>: <strong  th:text="${technicalBidAttachment[0].charTenderOpeningDate}"></strong></th>
+                <th>Time for Completion</th>
+                <th>: <strong  th:text="${technicalBidAttachment[0].timeForCompletion} +' Days.'"></strong></th>
+            </tr>
+        </table>
+    </div>
+    <div class="outset" style="text-align: right;"><i>Amount in Lakh RS.</i></div>
+
+    <table class="table2 table-striped" style="width:100%;text-align: center !important;">
+        <thead>
+        <tr>
+            <th rowspan="2">Sl No.</th>
+            <th rowspan="2" style="width:20%">Name of Bidder</th>
+            <th colspan="5">Execution of Similar Work during Last 3 Years (3a)</th>
+            <th colspan="2">Financial Turnover (3b)</th>
+            <th colspan="3">Availability of Credit Facilities (3f)</th>
+            <th rowspan="2">If Qualified in Classes ITB-3</th>
+        </tr>
+        <tr>
+            <th>Year of Agmt.</th>
+            <th>Agmt Value</th>
+            <th style="width: 7%">Value at <span th:text = "${finYr.name}"></span></th>
+            <th>Value of Work Completed</th>
+            <th>% of Work Completed</th>
+            <th>Max Turnover Year</th>
+            <th>Max Turn Over</th>
+            <th>Amount of Credit Lines</th>
+            <th>Amount of Liquid Assets</th>
+            <th>Total Assets</th>
+        </tr>
+        </thead>
+<!--        class="table table-striped; width: 100%;" style="background-color: #d5d9db; color: white;"-->
+        <tbody>
+        <tr class="mainTableTr" th:each="data,iterator : ${technicalBidAttachment}">
+            <td th:text="${iterator.index+1}" ></td>
+            <td style="text-align: left" th:text = "${data.agency}"></td>
+            <td style="text-align: center" th:text = "${data.finYrName}"></td>
+            <td style="text-align: right" th:text = "${data.similarWorkValue}"></td>
+            <td style="text-align: right" th:text = "${data.previousYearWeightage}"></td>
+            <td style="text-align: right" th:text = "${data.valueOfWorkCompleted}"></td>
+            <td style="text-align: right" th:text = "${data.workCompleted} + ' %' "></td>
+            <td style="text-align: center" th:text = "${data.maxTurnOverYear}"></td>
+            <td style="text-align: right" th:text = "${data.maxTurnover}"></td>
+            <td style="text-align: right" th:text = "${data.creditFacilityRequired}"></td>
+            <td style="text-align: right" th:text = "${data.amountOfLiquidAssets}"></td>
+            <td style="text-align: right" th:text = "${data.creditFacilityAvailable}"></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+    <hr/>
+    <table>
+        <tr>
+            <td>Total Participants in the Work : <strong  th:text="${record}"></strong><span style="font-family:sans-serif; margin-left:8%"></span></td>
+        </tr>
+        <tr>
+            <td><strong>NB: Figures in BOLD and NQ = Not Qualified</strong></td>
+        </tr>
+    </table>
+    <hr style="float: right; width: 25%"/>
+    <h4 style="padding-left: 80%"><strong> Asst. Executive Engineer </strong></h4>
+
+</div>
+
+</body>
+</html>

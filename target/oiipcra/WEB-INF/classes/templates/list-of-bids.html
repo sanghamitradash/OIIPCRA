@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:background-color="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+    <style>
+     .container {
+                    padding-top: 22px;
+                     width: 1000px;
+                      width: auto;
+                      margin-right: auto;
+            margin-left: auto;
+            *zoom: 1;
+                }
+                .container:before,
+        .container:after {
+            display: table;
+            line-height: 0;
+            content: ""
+        }
+
+        .container:after {
+            clear: both
+        }
+
+p{
+font-size:14px;
+}
+
+@page { size: A4 landscape;}
+  div{page-break-inside:avoid}
+
+ @page {
+  @bottom-right {
+    content: "Page " counter(page) " of " counter(pages);
+  }
+}
+
+<!--.div1 {-->
+<!--  width: 1000px;-->
+<!--  height: 25px;-->
+<!--  border: 1px solid blue;-->
+<!--  margin-left: 20%;-->
+<!--}-->
+.outset {border-style: inset;}
+
+
+    </style>
+</head>
+<body>
+
+<div class="container" >
+<!--    <table width="100%">-->
+<!--        <tr>-->
+<!--            <td style="text-align:left;"><img  src="../pdf-resources/images/logo.png"  /></td>-->
+<!--            <td style="text-align:center;"><img  src="../pdf-resources/images/logo-text.png" /></td>-->
+<!--            <td style="text-align:right;" ><img  src="../pdf-resources/images/govtp-logo.png" /></td>-->
+<!--        </tr>-->
+<!--    </table>-->
+    <div class="outset"><strong style="font-family:sans-serif; margin-left:20%;margin-top:0" >COMMUNITY TANK DEVELOPMENT AND MANAGEMENT SOCIETY, BHUBANESWAR</strong></div>
+
+    <hr/>
+
+
+    <div>
+               <table>
+                   <tr>
+                       <td><strong><u>LIST OF BIDS PARTICIPATED:</u></strong></td>
+                   </tr>
+                   <hr style="width:60%;text-align:left;margin-left:0"></hr>
+                  <tr>
+                        <td> Name of Agency: &nbsp; <strong>M/S. " + data.getAgency() + "," + data.getLicenseClass() + "</strong> </td>
+
+                  </tr>
+                   <tr>
+                       <td>GSTIN of Agency: &nbsp; <strong>" + data.getGstInNo() + "</strong> </td>
+                       <td>BID Identification: &nbsp; <strong>" + data.getTenderBidId() + "</strong></td>
+                       <div><p style="float: right; margin-left:100%;">" + data.getGstInNo() + "</p></div>"+
+                   </tr>
+
+                </table>
+        </div>
+
+
+    <table>
+        <thead>
+        <tr>
+            <th scope="col">Package ID</th>
+            <th scope="col">BID Validity</th>
+            <th scope="col">Amount put to tender (Rs.)</th>
+            <th scope="col">Amount of Bid by Agency (Rs.)</th>
+            <th scope="col">Bid % Excess/Less</th>
+            <th scope="col">Similar Work Agmt Required</th>
+            <th scope="col">Annual turnover Required</th>
+            <th scope="col">Credit facility Required</th>
+            <th scope="col">Similar Work Done</th>
+            <th scope="col">Credit Facility Available</th>
+            <th scope="col">Max Annual Turnover</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+
+            <td>v</td>
+            <td>k</td>
+            <td>dfd</td>
+            <td>df</td>
+            <td>sf</td>
+            <td>ss</td>
+            <td>sdf</td>
+            <td>sd</td>
+            <td>sdfs</td>
+            <td>similar work done</td>
+            <td>credit facility available</td>
+            <td>df</td>
+
+        </tr>
+
+        </tbody>
+    </table>
+    <hr/>
+        <table>
+            <tr>
+                <td>Total:    <span style="font-family:sans-serif; margin-left:8%"></span></td>
+                <td>Total:    <span style="font-family:sans-serif; margin-left:8%"></span></td>
+            </tr>
+        </table>
+        <hr/>
+        <h4><strong> Summary for Agency: &nbsp; (1 detail record) </strong></h4>
+        <hr/>
+</div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document</title>
+<!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css"/>-->
+<!--  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"/>-->
+<!--  <link rel="stylesheet" th:href="@{../pdf-resources/css/bootstrap2.css}"/>-->
+
+  <style>
+        .container {
+            padding-top: 30px;
+             width: 1000px;
+              width: auto;
+              margin-right: auto;
+    margin-left: auto;
+    *zoom: 1;
+        }
+        .container:before,
+.container:after {
+    display: table;
+    line-height: 0;
+    content: ""
+}
+
+.container:after {
+    clear: both
+}
+<!--striped-->
+th, td {
+  text-align: left;
+<!--  padding: 16px;-->
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+<!--striped-->
+.table {
+    width: 100%;
+    margin-bottom: 20px
+}
+
+.table th,
+.table td {
+    padding: 8px;
+    line-height: 20px;
+    text-align: left;
+    vertical-align: top;
+    border-top: 0px solid #ddd
+}
+
+
+
+
+
+
+@page {
+  @bottom-right {
+    content: "Page " counter(page) " of " counter(pages);
+  }
+}
+
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div style=" display: flex; justify-content: space-around;">
+      <img  src="../pdf-resources/images/logo.png"  class="img-rounded logo" />
+
+
+      <img  src="../pdf-resources/images/logo-text.png" style="margin-left:30px" class="img-rounded logo" />
+
+
+      <img  src="../pdf-resources/images/govtp-logo.png" style="margin-left:40px" class="img-rounded logo" />
+    </div>
+  </div>
+
+
+  <h5 class="font-weight-bold" style="margin-left: 142px!important;">Odisha Community Tank Development and Management Society, Bhubaneswar</h5>
+
+  <p>
+
+    <span class="nowrap">Financial Bid Opening in Tender ID: :</span>
+    <span class="nowrap" th:text="${bidId}"></span>
+  </p>
+  <p>
+    <span class="nowrap">Financial Bid Opened on Dt:</span>
+    <span  th:text="${#dates.format(bidOpeningDate, 'dd-MMM-yyyy')}" class="nowrap"></span>
+  </p>
+
+  <div>
+    <table class="table table-striped" style="width:100%;">
+      <thead style="background-color: darkgray;">
+
+      <tr>
+        <th scope="col">Work Sl in Tcn</th>
+        <th scope="col">Work/Package Id</th>
+        <th scope="col">Amount Put to tender in Rs</th>
+        <th scope="col">Name of Agency</th>
+        <th scope="col">Class of Licence</th>
+        <th scope="col">Rate Quoted By Bidder in Rs</th>
+        <th scope="col">Rate in Percentage Excess/Less</th>
+        <th scope="col">Bid Position</th>
+        <th scope="col">Max Bid Capacity In Lakh Rs.</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="data,iterator : ${FinancialData}">
+        <td th:text="${iterator.index+1}" ></td>
+                  <td th:text = "${data.workId}"></td>
+                  <td th:text = "${data.tender_amount}"></td>
+                  <td th:text = "${data.agency}"></td>
+                  <td th:text = "${data.licenseClass}"></td>
+                  <td th:text = "${data.amount_quoted}"></td>
+                  <td th:text = "${data.rate_excess_less}"></td>
+                  <td th:text = "${data.bid_position}"></td>
+                  <td th:text = "${data.max_bid_capacity}"></td>
+      </tr>
+      </tbody>
+    </table>
+    <br/>
+
+    <hr style=" width: 30%;float: left;" />
+    <br/>
+   <p style=" font-style: italic;margin-left:0px;margin-top:2px"> <span >  OIIPCRA-Fin &nbsp;Bid/ &nbsp; </span><span th:text="${#dates.format(standardDate, 'dd-MM-yyyy')}"></span></p>
+  </div>
+  </div>
+
+
+</body>
+</html>

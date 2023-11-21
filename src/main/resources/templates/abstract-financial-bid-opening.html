@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+    <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/css/bootstrap.min.css"/>-->
+    <link rel="stylesheet" th:href="@{../pdf-resources/css/bootstrap2.css}"/>
+
+    <style>
+        .invoice-head td {
+            padding: 0 8px;
+        }
+
+        .container {
+            padding-top: 30px;
+        }
+
+        .invoice-body {
+            background-color: transparent;
+        }
+
+        .invoice-thank {
+            margin-top: 60px;
+            padding: 5px;
+        }
+
+        address {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="span" >
+            <img  th:src="@{../pdf-resources/images/logo.png}"  class="img-rounded logo" />
+        </div>
+        <div class="span" style="margin-left:10px;margin-right:10px;">
+            <img  th:src="@{../pdf-resources/images/logo-text.png}"  class="img-rounded logo" />
+        </div>
+        <div class="span" style="margin-left:0px">
+            <img  th:src="@{../pdf-resources/images/govtp-logo.png}" class="img-rounded logo" />
+        </div>
+    </div>
+
+    <div class="row">
+        <table class="table table-striped" style="width:76%" >
+            <thead>
+
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">cvdfjvhjfd</th>
+                <th scope="col">Ladvdcv </th>
+                <th scope="col">Handvdv</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handlefffff</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="data : ${AbstractData}">
+                <td th:text = "${data.bid_id}"></td>
+                <td th:text = "${data.financial_bid_opening_date}"></td>
+                <td th:text = "${data.workId}"></td>
+                <td th:text = "${data.agency}"></td>
+                <td th:text = "${data.licenseClass}"></td>
+                <td th:text = "${data.tender_amount}"></td>
+                <td th:text = "${data.bid_price}"></td>
+                <td th:text = "${data.quoted}"></td>
+                <td th:text = "${data.emd_amount}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+</div>
+</body>
+</html>

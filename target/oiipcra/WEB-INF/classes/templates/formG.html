@@ -1,0 +1,194 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" >
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+    <style>
+        body {
+    text-align: justify;
+    text-justify: inter-word;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    padding-top: 22px;
+    width: 1000px;
+    width: auto;
+    margin-right: auto;
+    margin-left: auto;
+    *zoom: 1;
+}
+.container:before,
+.container:after {
+    display: table;
+    line-height: 0;
+    content: "";
+}
+
+.container:after {
+    clear: both;
+}
+
+
+
+
+
+@page {
+    @top-right {
+        content: "Page " counter(page) " of " counter(pages);
+    }
+
+}
+
+div.footer {
+    display: block;
+
+    position: running(footer);
+}
+
+@page {
+   @bottom-left {
+        content:  element(footer);
+    }
+  }
+
+  @page {
+    size: landscape;
+}
+
+.padding {
+    padding-right: 20px;
+    width: 34%;
+}
+.paddingRight {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.test{
+align :right ;
+}
+
+
+.about-border {
+    display: block;
+    width: 160px;
+    height: 1px;
+    background: #000000;
+
+}
+.mainTable {
+
+    border-spacing: 0px;
+
+}
+td {
+    border: none;
+}
+.mainTableTr {
+  border-bottom: 1pt solid black;
+}
+table thead th { border-bottom: 1px solid #000; }
+
+.box {
+
+  padding: 10px;
+  border: 2px solid black;
+  box-shadow: 5px 5px #888888;
+
+}
+
+</style>
+</head>
+<body>
+
+    <div class="page1">
+        <table width="100%" style="border-style: none;">
+            <tr>
+                <td style="text-align:left;border-style: none;"><img src="../pdf-resources/images/govtp-logo.png"/></td>
+                <td style="text-align:center;border-style: none;">
+                    <span class="box" ><strong> ODISHA COMMUNITY TANK DEVELOPMENT AND MANAGEMENT SOCIETY, BHUBANESWAR</strong></span> <br/><br/>
+
+                    <strong> <span  th:text="${OfficeData[0].spuAddress}"></span> <span th:text="${OfficeData[0].spuPost}"></span>. <span th:text="${OfficeData[0].spuPinNo}"></span> Ph:<span th:text="${OfficeData[0].landLineNo}"></span>,E-Mail:<span th:text="${OfficeData[0].spuEmail}" ></span></strong> <br/>
+
+
+
+                </td>
+                <td style="text-align:right;border-style: none;"><img src="../pdf-resources/images/logo.png"/>
+                </td>
+            </tr>
+        </table>
+
+
+<!--        <p><strong>Form-G :</strong>  <strong>Activity Report of Contractors</strong></p>-->
+<!--        <p>Financial Year : <strong th:text="${agency[0].finyr}"></strong>         <span class="test" style="margin-left:22%">No./Date of Issue No. <strong th:text="${issueNo}+' / Dt: '  +   ${#dates.format(#dates.createNow(), 'dd-MM-yyyy')}"></strong></span></p>-->
+<!--        <p> Name of Agency : <strong> M/s.</strong> <strong th:text="${agency[0].agencyName}"></strong>    <span class="test" style="margin-left:10%">GSTIN of Agency: <strong th:text="${agency[0].gstinNo}"> </strong></span>   <span class="test" style="margin-left:22%"><strong th:text="${agency[0].gstinNo}"> </strong></span></p>-->
+
+
+        <table style="width:100%; border: 0px;text-align: center !important;">
+
+            <tr>
+                <td style="float: left;">  Financial Year : <strong th:text="${agency[0].finyr}"></strong>   </td>
+                <td >No./Date of Issue No. <strong th:text="${issueNo}+' / Dt: '  +   ${#dates.format(#dates.createNow(), 'dd-MM-yyyy')}"></strong> </td>
+                <td style="float: right;"></td>
+            </tr>
+            <tr>
+                <td style="float: left;">Name of Agency : <strong> M/s.</strong> <strong th:text="${agency[0].agencyName}"></strong>  </td>
+                <td>GSTIN of Agency: <strong th:text="${agency[0].gstinNo}"></strong></td>
+                <td style="float: right;"><strong th:text="${agency[0].gstinNo}"></strong></td>
+            </tr>
+
+        </table>
+        <p><span class="test" style="margin-left:15%"><strong th:text="${formG[0].licenseClass} + '   Contractor' "></strong></span>  <span class="test" style="margin-left:58%"><strong><u>Amount in INR.</u></strong></span></p>
+        <hr style=" border: 1px solid black;"/>
+            <table class="mainTable" style="width:100%; border: 0px;text-align: center !important;">
+            <thead>
+            <tr class="mainTableTr">
+                <th>Sl.No</th>
+                <th>Bid ID / Name of Work / Supply / Package ID</th>
+                <th>District/Block</th>
+                <th>Scheme</th>
+                <th>Date Opening of Tender</th>
+                <th>Estimated Cost Put to tender</th>
+                <th>Validity of Tender</th>
+                <th>Awarded with if any</th>
+                <th>Legal Case initiated if any </th>
+                <th>Remarks </th>
+            </tr>
+            </thead>
+                <tbody>
+
+                <br/>
+            <tr class="mainTableTr" th:each="data,iterator : ${formG}">
+
+                <td th:text="${iterator.index+1}"></td>
+                <td th:text="${data.bid_workId}"></td>
+<!--                <td th:text="${data.district == null ? '' : N/A}"></td>-->
+                <td th:text="${data.district}"></td>
+                <td th:text="${data.scheme}"></td>
+                <td th:text="${#dates.format(data.tenderOpeningDate, 'dd-MM-yyyy')}"></td>
+                <td><img src="../pdf-resources/images/rupee.png" width="8px"/><span th:text="${data.tenderAmountString}"></span></td>
+                <td th:text="${data.validityOfTender}"></td>
+                <td th:text="${data.awarded}"></td>
+                <td ></td>
+                <td ></td>
+
+
+            </tr>
+            </tbody>
+
+        </table>
+
+        <br/>
+        <hr  style=" border: 1px solid black;"/>
+        <p><strong>Summary for Agency :</strong> (<strong th:text="${formG.size}"> </strong>)         <span class="test" style="margin-left:1%"><strong>Total Cost of tender participated:</strong> <img src="../pdf-resources/images/rupee.png" width="8px"/><strong th:text="${value.sumString}"></strong></span></p>
+        <hr style=" border: 1px solid black;"/>
+<!--        {formG.size>=1?<h1>dddddd</h1>:<h1>FFFFFF</h1>}-->
+        <p style="margin-right: 54px;margin-top: 90px; !important;text-align: right;justify-items: center;">Executive Engineer,Mon,OIIPCRA</p>
+
+</div>
+</body>
+</html>

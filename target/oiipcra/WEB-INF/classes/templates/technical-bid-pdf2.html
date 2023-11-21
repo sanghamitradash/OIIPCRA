@@ -1,0 +1,422 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" >
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+    <style>
+        body {
+    text-align: justify;
+    text-justify: inter-word;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    padding-top: 22px;
+    width: 1000px;
+    width: auto;
+    margin-right: auto;
+    margin-left: auto;
+    *zoom: 1;
+}
+.container:before,
+.container:after {
+    display: table;
+    line-height: 0;
+    content: "";
+}
+
+.container:after {
+    clear: both;
+}
+
+@page {
+    @top-right {
+        content: "Page " counter(page) " of " counter(pages);
+    }
+
+}
+
+@page {
+   @bottom-right {
+        content:  element(footer);
+    }
+  }
+
+@page {
+   @top-right {
+        content:  element(footer2);
+    }
+  }
+
+  @page {
+    size: A4;
+}
+
+
+div.footer {
+    display: block;
+    position: running(footer);
+}
+
+
+div.footer2 {
+    display: block;
+    position: running(footer2);
+}
+
+
+div.page1 {
+    page-break-after: always;
+}
+
+.table1 {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.table1 td, th {
+  border: 1px solid black;
+  padding: 8px;
+}
+.table2 td {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+}
+
+.table2 th {
+  border: 1px solid black;
+  padding: 8px;
+}
+
+
+</style>
+</head>
+<body>
+<div class="container" style="font-family:sans-serif;">
+    <div class="footer">
+
+        <p style="float: left;"> <hr style="width:250px"/><i>OIIPCRA W2-1/2019 &nbsp; &nbsp; &nbsp; <strong>BAL-03</strong></i></p>
+
+    </div>
+
+    <div class="footer2">
+
+        <p style="float: right;"> <i>BID EVALUATION REPORT OF PART-1 OF BIDS</i></p>
+
+    </div>
+
+    <div class="page1">
+<!--        <p style="text-align:center;border-style: none;"><h3>BID EVALUATION REPORT OF PART-1 OF BIDS</h3>-->
+        <p><strong>(National Competitive Bidding through e-procurement system)</strong></p>
+        <p><strong>1. Introduction:</strong><br/>
+        Government of Odisha in the Department of Water Resource has received a loan/credit under project No. <strong>project no</strong> from the International
+            Bank for Reconstruction and Development / international Development Association towards the cost of
+            <strong>"Odisha Integretaed Irrigation Project For Climate Resilient Agriculture (OIIPCRA)"</strong> and intends to apply a part of the funds to cover eligible
+            payments under the contract for construction of work as detailed in the Table below:
+        </p>
+        <table class="table1" style="width:100%; 1px solid #696767eb !important;">
+            <tr>
+                <th>District</th>
+                <th>Package ID</th>
+                <th>Name of Work</th>
+                <th>Estimated Cost(in INR)</th>
+                <th>Period of Completion</th>
+                <th>Bid Security(in INR)</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td th:text="${technicalBidsData[0].workId}"></td>
+                <td>3</td>
+                <td>4</td>
+                <td th:text="${technicalBidsData[0].periodOfCompletion}"></td>
+                <td>6</td>
+            </tr>
+        </table>
+
+        <p><strong>2. Orders for Procurement:</strong></p>
+        <p>Department of Watre Resources, Govt. of Odisha has cleared the procurement of this package on <strong th:text="${technicalBidsData[0].procurementDate}">.</strong></p>
+
+        <p><strong>3. Bidding Document:</strong></p>
+        <p>The bidding document used for this procurement is as per the model bidding document cleared by Department of Water Resources, Govt. of Odisha and the World bank.
+        The bidding Document along with the drawing and specifications was earlier reviewed by OIIPCRA.<br/>
+            Bids were invited through e-tendering system and NCB bidding procedure vide e-proc Notice of OCTDMS RFB: OIIPCRA W2-1/2020.<br/><br/>
+            The bidding document was provided <strong>Free of Cost.</strong></p>
+
+        <p><strong>4. Bid Invitation Process:</strong></p>
+        <p>Bids were invited by the Project Director, OCTDMS on behalf of the Governor of Odisha. The e-Procurement
+            notice was published on <strong th:text="${technicalBidsData[0].tenderPublishDate}"></strong> and the deadline date and time for submission of bids
+            through eProcurement was specified as <span th:text="${technicalBidsData[0].bidSubmissionDate}"></span> up to 18.00 hrs.
+            The e-procurement notice and the Invitation for Bids (IFB) were available on the website up to <span th:text="${technicalBidsData[0].bidSubmissionDateRevised}"></span> 18.00 Hrs. Copies of e-Procurement Notice and the
+            Invitation for Bids (IFB) are enclosed at <strong>Attachments 1-A &amp; 1- B.</strong><br/><br/>
+            The dates of publication of the e-Procurement Notice and corrigendum in the press are as follows: </p>
+        <table class="table1" >
+            <thead class="table1" style="width:100%; 1px solid #696767eb !important;">
+
+            <tr>
+                <th >Sl</th>
+                <th >Name of the News Paper</th>
+                <th >Level</th>
+                <th >Date of Publication</th>
+            </tr>
+            </thead>
+
+
+        </table>
+
+<!--        if condition-->
+        <table style="width:100%;" th:if="${#arrays.length(eProcurementNotice1) > 0}">
+            <tbody>
+            <tr th:each="item, iterStat : ${eProcurementNotice1}">
+                <td style="border: 0px solid; margin-left:10%; !important;" th:text="${iterStat.count}"></td>
+                <td style="border: 0px solid; margin-left:20%; !important; text-align: center;" th:text="${item.newsPaperName}"></td>
+                <td style="border: 0px solid; margin-left:8%; !important;  text-align: left;" th:text="${item.levelName}"></td>
+                <td style="border: 0px solid; margin-left:5%; !important; text-align: center;" th:text="${item.publishedDate}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+<!--        else condition-->
+        <table th:unless="${#arrays.length(eProcurementNotice1) > 0}">
+            <thead>
+            <tr>
+                <td></td>
+            </tr>
+            </thead>
+        </table>
+
+        <hr style="border: none; border-bottom: 0.5px solid black ;" />
+        <p><strong>Publication of Corrigendum to e-Procurement Notice :</strong></p>
+        <table class="table1" style="width:100%; 1px solid #696767eb !important;">
+            <thead>
+            <tr>
+                <th>Sl</th>
+                <th>Name of the News Paper</th>
+                <th>Level</th>
+                <th>Date of Publication</th>
+            </tr>
+            </thead>
+        </table>
+
+<!--        if condition-->
+        <table style="width:80%;" th:if="${#arrays.length(eProcurementNotice2) > 0}">
+            <tbody>
+<!--            th:each="item, iterStat : ${array}"-->
+            <tr th:each="item, iterStat : ${eProcurementNotice2}">
+                <td style="border: 0px solid; margin-left:10%; !important;" th:text="${iterStat.count}"></td>
+                <td style="border: 0px solid; margin-left:20%; !important; text-align: center;" th:text="${item.newsPaperName}"></td>
+                <td style="border: 0px solid; margin-left:8%; !important; text-align: center;" th:text="${item.levelName}"></td>
+                <td style="border: 0px solid; margin-left:5%; !important; text-align: center;" th:text="${item.publishedDate}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+<!--        else condition-->
+        <table th:unless="${#arrays.length(eProcurementNotice2) > 0}">
+            <thead>
+            <tr>
+                <td></td>
+            </tr>
+            </thead>
+        </table>
+
+
+        <hr style="border: none; border-bottom: 0.5px solid black;" />
+
+        <p>Apart from publishing the Corrigendum in the newspapers, it was uploaded on the website. (Copy of the Corrigendum is at <strong>Attachment 2</strong>). The date
+            and time for opening of Part 1 (Technical Qualification Part of the Bid) of bids was specified as 11.30 hrs on
+            <spanc th:text="${technicalBidsData[0].publishedDate}"></spanc>.
+            The bidding document for above works was made available on the website
+            <a href="www.tendersodisha.gov.in">www.tendersodisha.gov.in</a> upto <span th:text="${technicalBidsData[0].bidSubmissionDate}"></span>. A pre-Bid meeting was fixed and held on
+            <strong th:text="${technicalBidsData[0].preBidMeetingDate}"></strong> <strong>at State Project Unit, OCTDMS, Bhubaneswar.</strong> No Requests for online clarifications were received from the bidders and No Bidders have
+            participated in the pre-bid meeting.</p>
+        <p><strong>5. Bid Submission and Opening of Part I of Bids:</strong>  A check-list was made available in the bid document for guidance of the bidders indicating the documents to
+            be uploaded by the bidders while uploading their bids. A copy of the check list is attached as <strong>Attachment 4</strong>.
+            The electronic files containing Part I of the Bids (Technical Qualification Part of the Bid) were opened online
+            by the nominated representatives of the State Project Unit, OCTDMS on <strong th:text="${technicalBidsData[0].techBidDate}"></strong><strong> at 11.30 hours</strong> as
+            stipulated. An electronic summary of the opening of Part I Bids was prepared and placed online. A copy of
+            the summary of the opening of Part I Bids is given in <strong>Attachment 5.</strong></p>
+        <p><strong>6. Response:</strong></p>
+        <p th:if="${#arrays.length(technicalBidsLast3PagesData) > 1}">The Following <span th:text="${#lists.size(technicalBidsLast3PagesData)}"></span> Bidders has participated and submitted their bid(s) electronically by uploading on to the
+            website:<br/></p>
+        <p th:unless="${#arrays.length(technicalBidsLast3PagesData) > 1}">The Following <span th:text="${#lists.size(technicalBidsLast3PagesData)}"></span> Bidder has participated and submitted their bid(s) electronically by uploading on to the
+            website:<br/></p>
+
+        <table th:each="data,iterator : ${technicalBidsLast3PagesData}">
+            <tr>
+                <td></td>
+                <td th:text="${iterator.index+1}"></td>
+                <td>.</td>
+                <td>&nbsp;</td>
+                <td th:text="${data.biderNameClass}"></td>
+            </tr>
+        </table>
+
+        <p><strong>7. Evaluation of Bids</strong></p>
+        <div><p>7.1 &nbsp; The Project Director, OCTDMS, Bhubaneswar has formed the “High level Committee for Procurement
+            of OIIPCRA” vide office letter No. 588 dated 30.11.2019 of OCTDMS.</p></div>
+        <p style="text-align: justify;">7.2 &nbsp; The bidders were required to upload various documents with Part I of their bid as mentioned in ITB
+            Clause -3, as for instance, Format of Part I bid duly filled in, Qualification Information with supporting
+            documents, Affidavit affirming correctness of information, and, on-line submission of Bid Security,
+            Evidence of access to Line of Credit, Authority to submit bid, JV Agreement, Contractor registration
+            certificate etc. The bidders were also required to submit original affidavit affirming correctness of
+            information furnished with the Part I bid and the on credit facilities to be extended by the bank after
+            the opening of Technical Qualification Part of the Bid, either by registered post or by hand.
+
+            The bidder has submitted the required documents with the Part I bid.</p>
+        <p>7.3 &nbsp; Completeness and Legal Validity:  The following checks have been conducted for each bid:
+            - the name of the bidder appearing in the bid form is the same as the name whose electronic
+            signature has been used for uploading the bid.<br/>
+            The following documents (in original) have been received from all bidders:<br/>
+            (i) the Bank Guarantee on credit facilities to be extended by the bank<br/>
+            (ii) the original Affidavit regarding correctness of information furnished with the bid.</p>
+        <p>7.4 &nbsp; Bid Validity:  As per clause 4 of ITB, bids shall remain valid for a period not less than 90 days after the dead line for
+            the submission of Bids. Part-1 of the Bids were opened on <span th:text="${technicalBidsData[0].techBidDate}"></span> and hence the Bids are to be
+            valid upto <span th:text="${technicalBidsData[0].bidValidUpto}"></span>. Since Bidders have signed the bidding documents and not given any condition
+            regarding time, it is taken that these bids are valid up to 90 days after the bid opening i.e. upto
+            <strong th:text="${technicalBidsData[0].bidValidUpto}"></strong></p>
+        <p>7.5 &nbsp; Bid Security:  As per Clause-8 of ITB, the Bid security is to be submitted for an amount of <strong th:text="${technicalBidsData[0].emdDeposited}"><img src="../pdf-resources/images/rupee.png" width="8px"/>/-</strong> in shape of
+            online deposit. Details of the Bid security furnished by the Bidders are as follows:</p>
+
+        <table class="table1" style="width:100%; 1px solid #696767eb !important;">
+            <thead>
+            <tr>
+                <th>Sl</th>
+                <th>Name of Agency</th>
+                <th>EMD Deposited</th>
+                <th>Transaction Type</th>
+            </tr>
+            </thead>
+        </table>
+        <table style="width:100%" th:each="data,iterator : ${technicalBidsLast3PagesData}">
+            <tbody>
+            <tr>
+                <td style="border: 0px solid; margin-left:10%; !important;" th:text="${iterator.index+1}"></td>
+                <td style="border: 0px solid; margin-left:10%; !important;" th:text="${data.agencyName}"></td>
+                <td style="border: 0px solid; margin-left:10%; !important;" th:text="${data.emdAmount}"><img src="../pdf-resources/images/rupee.png" width="8px"/></td>
+                <td style="border: 0px solid; margin-left:10%; !important;" th:text="${data.transactionType}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <hr style="border: none; border-bottom: 0.5px solid black;" />
+        <p>7.6 &nbsp; Responsiveness to Clause 3 of ITB:</p>
+        <p>- as per <strong>Clause 3a</strong> of ITB, the Bidder should have taken up and satisfactorily completed <span th:text="${technicalBidsData[0].clause3a1}"></span>% of at
+            least one similar work of value not less than <strong><img src="../pdf-resources/images/rupee.png" width="8px"/>
+                <span th:text="${technicalBidsData[0].clause3a2}"></span> Lakh (<span th:text="${technicalBidsData[0].clause3a3}"></span>%)</strong>
+            of the Estimated Cost of the
+            Work put to tender in the last three years as a prime contractor.<br/><br/>
+            - as per <strong>Clause 3b</strong> of ITB, the Bidder should have achieved an annual financial turnover (in civil engineering construction works of similar nature only) of value not less than
+            <span th:text="${technicalBidsData[0].clause3b1}"></span><strong> times of the Estimated Cost of work</strong> at least in any one year in last three years. The value of previous years
+            works would be given an weightage of <strong><span th:text="${technicalBidsData[0].clause3b2}"></span>%.</strong><br/><br/>
+            - as per <strong>Clause 3g</strong> of ITB, the Bidder should have liquid assets and/or credit facilities, net of other
+            contractual commitments and exclusive of any advance payments which may be made under the
+            Contract, of not less than <strong><img src="../pdf-resources/images/rupee.png" width="8px"/> <span th:text="${technicalBidsData[0].clause3g}"></span></strong> Lakh (3 Months Peak period Expenditure).</p>
+        <p>7.7 &nbsp; Non-Responsive Technical Bids:</p>
+        <p>The Evaluation Committee examined the bids to determine their responsiveness. Details of checks
+            made in this regard to determine compliance of the bids with the Qualification Requirements as per
+            Para 7.6 above are detailed in Attachment 5-A.<br/>
+<!--                <span th:if="${#arrays.length(technicalBidsLast3PagesData) > 0}">-->
+                    The following bids are rejected as <strong>non-responsive</strong>
+<!--                </span>-->
+<!--                <span th:unless="${#arrays.length(technicalBidsLast3PagesData) > 0}"><strong>No bids have been rejected </strong> as non-responsive </span>-->
+
+            to the bidding documents.</p>
+
+        <table class="table1" style="width:100%; 1px solid #696767eb !important;">
+            <thead>
+            <tr>
+                <th>Sl</th>
+                <th>Name of Agency</th>
+                <th>Brief reasons for rejection</th>
+            </tr>
+            </thead>
+        </table>
+        <table style="width:100%">
+            <tbody th:each="item,iterator : ${technicalBidsLast3PagesData}">
+            <tr th:if="${not item.isBidderAwarded}">
+                <td style="border: 0px solid; margin-left:10%; !important;" th:text="${iterator.index+1}"></td>
+                <td style="border: 0px solid; margin-left:10%; !important; text-align: center;" th:text="${item.agencyName}"></td>
+                <td th:text="${item.tenderNotAwardedReason1} + '' + ${item.tenderNotAwardedReason2} + '' + ${item.tenderNotAwardedReason3}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <hr style="border: none; border-bottom: 0.5px solid black;" />
+
+        <p>7.8 &nbsp; Responsive Technical Bids:</p>
+        <p> In view of the above,
+            <span th:if="${#arrays.length(technicalBidsLast3PagesData) > 0}"> the following bids were considered </span>
+            <span th:unless="${#arrays.length(technicalBidsLast3PagesData) > 0}"> No Bids have been considered </span>
+            as responsive for proceeding with evaluation of technical qualification.</p>
+
+
+        <table th:each="data,iterator : ${technicalBidsLast3PagesData}">
+            <tbody>
+            <tr th:if="${data.isBidderAwarded}">
+                <td style="border: 0px solid; margin-left:10%; !important;" th:text="${iterator.index+1}"></td>
+                <td>.</td>
+                <td>&nbsp;</td>
+                <td style="border: 0px solid; margin-left:10%; !important; text-align: center;" th:text="${data.agencyName}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+
+        <p>7.9  The Review Committee checked the experience and qualifications of the responsive bidders as per
+            details provided in Attachment 5-B. All the Bidders who were technically responsive were found to be
+            technically qualified.</p>
+
+    <div>
+        <p><strong>8. &nbsp; Recommendations:</strong></p>
+        <p>8.1  The Review Committee for Procurement in its meeting held on <strong th:text="${technicalBidsData[0].technicalBidApprovalDate}"></strong> recommends that based on the evaluation of Part-1 bids, the following
+            bidders are considered as havinf qualified in terms of ITB Clause-3 for the Project ID: <strong th:text="${technicalBidsData[0].workId}"></strong> under the
+            BID ID: <strong th:text="${technicalBidsData[0].bidId}"></strong> to be eligible for opening of Part-2 bids: </p>
+        <p style="padding-left: 20px;"><strong> 1. Prakash Chandra sahu </strong></p>
+        <p>8.2  The Review Committee also recommends that Part-2 bids (Financial Part of Bid) of the 1 bidder(s) listed at Paragraph- 8.1 above may be opened
+            online on <strong th:text="${technicalBidsData[0].financialBidOpeingDate}"></strong>.</p>
+        <p>8.3  The Review Committee submits its recommendations for approval of the Competent Authority as well
+            as the uploading of the results of the evaluation of Part 1 of bids on the e-procurement website.</p>
+    </div>
+
+        <div style="text-align:center;">
+            <table style="width:100%; padding-top:50px;">
+                <tr>
+                    <td><p style="border-top: 1px solid black; padding-top: 10px; display:inline; ">[EE (Procurement)]</p></td>
+                    <td><p style="border-top: 1px solid black; padding-top: 10px; display:inline; ">[Project Finance Officer]</p></td>
+                    <td><p style="border-top: 1px solid black; padding-top: 10px; display:inline; ">[Addl. Project Director (Engg)]</p></td>
+                </tr>
+            </table>
+        </div>
+    <br/>
+    <div>
+        <p>Bid Accepting Authority has accepted the recommendations of the Review Committee for Procurement.</p>
+        <p><strong style="padding-left: 20px;">Bid Accepting Authority:</strong></p>
+        <p style="padding-left: 20px; padding-top: 20px;"><strong>Bid Accepting Authority:</strong></p>
+    </div>
+
+    <div>
+        <p><strong>9. Attachments:</strong></p>
+        <p>i. &nbsp; Copy of e-Procurement Notice (Press Advertisement)- Attachment 1-A.</p>
+        <p>ii. &nbsp; Copy of Invitation for Bids (IFB) - attachment 1-B.</p>
+        <p>iii. &nbsp; Copy of corrigendum to e-Procurement Notice- Attchment 2</p>
+        <p>iv. &nbsp;  Copy of clarification provided to the Bidders against their queries - attchment-3</p>
+        <p>v. &nbsp;  Copy of check-list made available on the webside for guidance of the bidders - Attachment-4</p>
+        <p>vi. &nbsp; Copy of Summary of Bid Opening of Part I bids - attachment-5</p>
+        <p>vii. &nbsp; Copy of Determination of Responsiveness of bids - Attachment 5-A</p>
+        <p>viii. &nbsp; Copy of Determination of comliance of bids with qualifications Requirements - Attachment 5-B.</p>
+    </div>
+
+
+
+    </div>
+
+
+
+</div>
+</body>
+</html>

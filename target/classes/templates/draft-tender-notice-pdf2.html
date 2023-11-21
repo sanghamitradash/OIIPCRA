@@ -1,0 +1,477 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+    <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css"/>-->
+    <!--  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"/>-->
+    <!--  <link rel="stylesheet" th:href="@{../pdf-resources/css/bootstrap2.css}"/>-->
+
+    <style>
+        body {
+    text-align: justify;
+    text-justify: inter-word;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container {
+    padding-top: 22px;
+    width: 1000px;
+    width: auto;
+    margin-right: auto;
+    margin-left: auto;
+    *zoom: 1;
+}
+.container:before,
+.container:after {
+    display: table;
+    line-height: 0;
+    content: "";
+}
+
+.container:after {
+    clear: both;
+}
+
+table,
+th,
+td {
+    border: 1px solid #9e9696;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 8px;
+    line-height: 15px;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+}
+
+.table th {
+    font-weight: bold;
+}
+
+.table thead th {
+    vertical-align: bottom;
+}
+
+.table caption + thead tr:first-child th,
+.table caption + thead tr:first-child td,
+.table colgroup + thead tr:first-child th,
+.table colgroup + thead tr:first-child td,
+.table thead:first-child tr:first-child th,
+.table thead:first-child tr:first-child td {
+    border-top: 0;
+}
+
+
+
+
+@page {
+    @top-right {
+        content: "Page " counter(page) " of " counter(pages);
+    }
+
+}
+
+div.footer {
+    display: block;
+
+    position: running(footer);
+}
+
+@page {
+   @bottom-left {
+        content:  element(footer);
+    }
+  }
+
+.padding {
+    padding-right: 20px;
+    width: 34%;
+}
+.paddingRight {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+.zobra:nth-child(even) {
+<!--    background-color: #f2f2f2;-->
+    background-color: #ebf3fc;
+}
+.about-border {
+    display: block;
+    width: 160px;
+    height: 1px;
+    background: #000000;
+
+}
+.rupee{
+    background-position:center;
+    padding-left:15px;
+<!--    padding-top:20px;-->
+    width: 10px;
+    height: 14px;
+    background-image: url('../pdf-resources/images/rupee.png');
+    display:block;
+    background-repeat: no-repeat;
+}
+.child{
+    display: inline-block;
+    padding: 1rem 1rem;
+    vertical-align: middle;
+}
+
+
+
+
+</style>
+</head>
+<body>
+<div class="container" >
+    <div style="" class='footer'>
+        <div class="about-border"></div>
+
+        <p style="margin-top: 2px;"><i><span th:text="${DraftTenderNotice.bidId}"></span></i></p>
+
+    </div>
+    <div class="page1"  >
+        <table width="100%" style="border-style: none;">
+            <tr>
+                <td style="text-align:left;border-style: none;"><img src="../pdf-resources/images/logo.png"/></td>
+                <td style="text-align:center;border-style: none;">
+
+                    <strong> GOVERNMENT OF ODISHA</strong> <br/>
+                    <strong> Department of Water Resources</strong> <br/>
+                    <strong  th:text="${OfficeData[0].officeName}"></strong> <br/>
+                    <strong> Dist:- <span  th:text="${OfficeData[0].districtName}"></span>, Pin: <span th:text="${OfficeData[0].spuPinNo}"></span></strong> <br/>
+                    Ph:<span th:text="${OfficeData[0].landLineNo}"></span>,E-mail:<span th:text="${OfficeData[0].spuEmail}" ></span> <br/>
+
+
+                </td>
+                <td style="text-align:right;border-style: none;"><img src="../pdf-resources/images/govtp-logo.png"/>
+                </td>
+            </tr>
+        </table>
+        <div style="text-align: center; top: -21px;
+    position: inherit;     line-height: 0px;">
+            <h5>ODISHA INTEGRATED IRRIGATION PROJECT FOR CLIMATE RESILIENT AGRICULTURE(OIIPCRA)</h5>
+            <h5>(WORLD BANK PROJECT ID: PI63533)</h5>
+            <h5>REQUEST FOR BIDS(RFB) E Procurement Notice</h5>
+            <h5>NATIONAL OPEN COMPETITIVE PROCUREMENT FOR SMALL WORKS</h5>
+        </div>
+
+        <hr style="width:70% "/>
+        <div style="text-align: center">
+            <span>RFB No.&nbsp; <strong th:text="${DraftTenderNotice.bidId}"></strong>  </span>
+            <span>Date.&nbsp; <strong
+                th:text="${#dates.format(#dates.createNow(), 'dd-MM-yyyy')}"></strong> </span>
+        </div>
+
+
+        <hr style="width:70%"/>
+
+        <p>
+            1.The Government of India has received a credit from the International Development Association/ loan from
+            the International Bank for Reconstruction and Development
+            towards the cost of 538 Minor Irrigation Projects under OIIPCRA.The project is implemented through the "Odisha
+            Community Tank Development and Management Society(OCTDMS)", an SPV under the Department of Water Resources(DoWR).
+        </p>
+
+        <p>
+            2.Now,the <span th:text="${OfficeData[0].designationName}"></span> intends to apply a part of the funds to cover eligible payments under the contracts for
+            construction of works as detailed below. Bidding is open to all bidders from eligible source countries as
+            defined in the "Procurement Regulations for IPF Borrowers,
+            July 2016" modify if required, the date/month of applicable Procurement Regulations edition as per legal
+            agreement ("Procurement Regulations").
+            Bidders from India should, however, be registered with the Government of Odisha or other State Governments/
+            Government of India, or State/Central Government Undertakings.
+            Bidders are advised to note the minimum qualification criteria specified in Cause-3 of the Instructions to
+            Bidders to qualify for the award of the contract.
+            In addition, please refer to paragraphs 1.6 and 1.7 of the World Bank's Guidelines setting forth the World
+            Bank's policy on conflict of interest.
+        </p>
+        <p>
+            3.The <span th:text="${OfficeData[0].designationName}"></span>, <span th:text="${OfficeData[0].spuPost}"></span> on-behalf of the Governor of Odisha invites <strong th:text="${data[0].biddingType}"></strong> bids
+            through e-procurement for the following <strong th:text="${data[0].workType}"></strong>
+            as detailed in the Annexure-A from the eligible Class of <strong>Contractors</strong> and manufacturers/ suppliers to
+            be eventually drawn up in <strong>W2</strong> contract for the construction of works
+            detailed in the table below. The bidders may submit bids for any or all of the following works (Packages).
+        </p>
+        <p>
+            4.The bidding document is available online <strong>Free of cost</strong> on https://tendersodisha.gov.in (website).
+            Bidders will be required to register on the website, which is free of cost. The bidders would be responsible
+            for ensuring that any agenda available on the
+            website is also downloaded and incorporated. Interested bidders may obtain further information by requesting
+            clarifications online through the e-procurement portal.
+        </p>
+        <p>
+            5.For submission of the bid, the bidder is required to have Digital Signature Certificate (DSC)
+            from one of the Certifying Authorities authorized by Government of India for issuing DSC. Aspiring
+            bidders who have not obtained the user ID and password for participating in e-procurement in this
+            Project, may obtain the same from the website: https://tenderodisha.gov.in with prescribed
+            procedures displayed therein.
+        </p>
+        <p>
+            6.Bidders are required to deposit bid security of the amount specified as indicated appropriate column of
+            the table below to be
+            paid online in accordance with e-procurement stipulations. Bids should be <strong> valid for 90 days</strong> after the
+            deadline date specified for submission.
+        </p>
+        <p>
+            7.Bids must be submitted on <strong>https://tenderodisha.gov.in</strong> (website) on or before dt: <strong th:text="${#dates.format(DraftTenderNotice.availabilityDocumentTo, 'dd-MM-yyyy')}" > </strong> <strong>by 15.00 Hrs</strong>
+            and the 'Technical Part' of the bids will be publicly
+            opened online on dt: <strong><span th:text="${#dates.format(DraftTenderNotice.tenderOpeningDate, 'dd-MM-yyyy')}"></span> at 15.30 hours, in the office of the <span th:text="${OfficeData[0].designationName}"></span>, <span th:text="${OfficeData[0].spuAddress}"></span>,<span th:text="${OfficeData[0].spuPost}"></span></strong> in presence of the bidders
+            who wish to attend. The entry in to Rajiv Bhawan premises for the participating bidders will be subject to
+            clearance by the Govt. Hence, the bidders are requested
+            to indicate their gmail address who in turn will be allowed to attend the opening through virtual conference
+            in Google meet. The Financial Part" shall remain
+            unopened in the e-procurement system until the second public Bid opening for the financial part. Any bid or
+            modifications to bid (including discount) received
+            outside e-procurement system will not be considered. If the office happens to be closed on the date of
+            opening of the bids as specified, the technical parts
+            of bids will be opened on the next working day at the same time and venue. The electronic bidding system
+            would not allow any late submission of bids.
+        </p>
+        <p>
+            8. The bidders are requested to submit any query about the projects, on-line to the <span th:text="${OfficeData[0].designationName}"></span>,
+            <span th:text="${OfficeData[0].spuPost}"></span> as mentioned in NIT.
+            A virtual pre-bid meeting is fixed to be held on <strong><span th:text="${#dates.format(DraftTenderNotice.preBidMeetingDate, 'dd-MM-yyyy')}"></span> at the <span th:text="${OfficeData[0].officeName}"></span>,
+            <span th:text="${OfficeData[0].spuAddress}"></span>, <span th:text="${OfficeData[0].spuPost}"></span> at 11.30 Hrs to 14.00 Hrs.</strong>
+            Those who wish to attend may send their g-mail ID/ Whatsapp Phone number to this office email:
+            spuoiipcra.od@gov.in by 17.30 Hrs on <strong><span th:text="${#dates.format(DraftTenderNotice.previousDate, 'dd-MM-yyyy')}"></span>.</strong>
+            The virtual conference details/link will be sent to the participants to their gmail ID or Whatsapp Phone
+            number by 11.00 Hrs an <strong><span th:text="${#dates.format(DraftTenderNotice.preBidMeetingDate, 'dd-MM-yyyy')}"></span>.</strong>
+            No request for login details will be accepted after 17.30 Hrs on <strong><span th:text="${#dates.format(DraftTenderNotice.previousDate, 'dd-MM-yyyy')}"></span>.</strong>
+        </p>
+        <p>
+            9.The bidders are required to note that if any of the documents uploaded found to be forged, the bidder will
+            be debarred from participating in bid
+            competition of this organization and his name will be recommended to appropriate authority for cancellation
+            of license.
+        </p>
+        <p>
+            10.Any documents of bidders challenged in any court of law, it is sole responsibility of the bidders and the
+            authority inviting tender will not be dragged to any court of law.
+        </p>
+        <p>
+            11. The Employer shall not be held liable for any delays due to system failure beyond its control. Even
+            though the system will attempt to notify the bidders of any bid updates, the Employer shall not be liable
+            for any information not received by the bidder. It is the bidders' responsibility to verify the
+            website for the latest information related to this bid.
+        </p>
+        <p>
+            12. Quality control tests as per specification for all items of the work executed will be taken in nearby
+            Government Quality Control Laboratories of Minor/ Medium/ Major Irrigation Organization.
+            Further external third party Quality Control and Quality Assurance Consultancy Services will be engaged to
+            ensure quality check. It is binding on successful bidder to extend all necessary support in getting the
+            tests done till completion of the work in all respect.
+        </p>
+        <p>
+            13. Bidders are required to upload scanned copies of the documents (i) Contractor's Registration
+            certificate. (ii) Copy of original affidavit regarding authentication
+            of documents. (iii) GST registration certificate, (iv) No relation certificate (v) Credit facility
+            certificate from bank (vii) Qualification information as per DTCN, otherwise
+            his/ her bid shall be declared as non-responsive and shall be rejected. The successful bidder only is
+            required to produce documents viz: Original Contractor's Registration
+            Certificate, GST Registration Certificate. PAN Card, Original affidavit regarding authenticity of documents,
+            No relation Certificate,
+            Original Credit Facility Certificate for verification purpose within 5 Working Days of opening of Financial
+            Bid.
+        </p>
+        <p>
+            14. All duties, Taxes, Royalty and other levies etc. payable by the agency as per State Government of
+            Odisha/ Central Government Rules, shall be deemed to have
+            been included in the contract value quoted by the bidder excepting the amount of GST. Relevant taxes will be
+            deducted as per prevalent rules.
+        </p>
+        <p>
+            15. The bidders are required to submit work plan for indicative miles stone, at the time of submission of
+            bid in the format <strong>Annexure-2 of the DTCN</strong>.
+        </p>
+        <p>
+            16. The bid document shall form a part of contract and only required documents need to be uploaded during
+            online bid submission for evaluation of bid.
+        </p>
+        <p>
+            17. Bidders are advised to read carefully the "Instruction to Bidders" contained in the tender document.
+        </p>
+        <p>
+            18. If the Bid of the successful Bidder is seriously unbalanced in relation to the Engineer's estimate of
+            the cost of work to be performed under the contract,
+            the Employer may ask the Bidder to produce detailed price analyses for any or all items of the Bill of
+            Quantities, to demonstrate the internal consistency of those
+            prices with the construction methods and schedule proposed. After evaluation of the price analyses, the
+            Employer may require that the amount of the performance
+            security set forth in Clause 11 of draft agreement be increased at the expense of the successful Bidder to a
+            level sufficient to protect the Employer against financial
+            loss in the event of default of the successful Bidder under the Contract.
+        </p>
+        <p>
+            19. The contractor would be responsible for procurement of materials from authorized sources and voluntarily
+            disclose the source of procurement for the purpose of billing.
+            Besides, the bidder would be required to submit the details of quarry for procurement while submitting the
+            bid.
+            Bidders who meet the minimum qualification criteria will be qualified only if their available bid capacity
+            is more than the total bid value.
+        </p>
+        <p>
+            20. Any amission or commission after execution of agreement, decision of the concerned
+            Engineering Organization in hierarchy is final and binding to the bidder.
+        </p>
+        <p>
+            21. The authority reserves the right to reject any or all the bids without assigning
+            any reason thereof.Other details can be seen in the bidding document.
+        </p>
+        <p>
+            22. The address (es) referred to above is:
+            <strong><span th:text="${OfficeData[0].designationName}"></span>, <span th:text="${OfficeData[0].spuAddress}"></span>, <span th:text="${OfficeData[0].spuPost}"></span>-<span th:text="${OfficeData[0].spuPinNo}"></span>. Ph. <span th:text="${OfficeData[0].landLineNo}"></span> ,
+                E-Mail:<span th:text="${OfficeData[0].spuEmail}"></span> . </strong>
+        </p>
+        <p style="margin-left: 810px;"><span th:text="${OfficeData[0].designationName}"></span></p>
+
+
+        <h3 class="font-weight-bold" style="text-align: center !important;">ANNEXURE - A</h3>
+
+        <table style="width:100%; border: 1px solid black;text-align: center !important;">
+            <thead style="background-color: #457ca3; color: white;" >
+            <tr >
+                <th>Sl.No</th>
+                <th>Work Sl No. in TCN</th>
+                <th>Name of Work</th>
+                <th style="width:8% ;">Package/Work ID</th>
+                <th>Estd.Cost(Rs.Lakh)</th>
+                <th>Fixed EMD @ 1% in Rs.</th>
+                <th>Time for Completion in Days</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr  class="zobra" th:each="data,iterator : ${annexureATableData}">
+
+                <td th:text="${iterator.index+1}"></td>
+                <td th:text="${data.workSlNOTcn}"></td>
+                <td th:text="${data.nameOfWork}"></td>
+                <td th:text="${data.workIdentificationCode}"></span></td>
+                <td align="right"><span class="rupee child"></span><span class="child" th:text="${data.tenderAmount}"></span></td>
+                <td align="right"><span class="rupee child"></span><span class="child" th:text="${data.bidSecurity}"></span></td>
+                <td th:text="${data.timeForCompletion}"></td>
+
+
+            </tr>
+            </tbody>
+        </table>
+
+        <p>
+            Memo No. <strong th:text="${DraftTenderNotice.memoNumber + 1}"></strong>          Date: <strong th:text="${#dates.format(#dates.createNow(), 'dd-MM-yyyy')}"></strong>
+        </p>
+        <p>
+            Copy in duplicate along with soft copy of the tender notice submitted to the Head Portal, Information and
+            Technology Department for exhibiting the advertisement in the website of the Government
+            <strong>up to 17.00 Hrs Dt: <span th:text="${#dates.format(DraftTenderNotice.tenderPublicationDate, 'dd-MM-yyyy')}"></span> </strong> as suggested in IT Department Lr.No.221/31.8.2002 addressed
+            to all Secretaries.<br/>
+            <strong>End: Soft Copy by e-mail.</strong>
+        </p>
+        <p style="margin-right: 54px !important;text-align: right;justify-items: center;"><span th:text="${OfficeData[0].designationName}"></span><span th:text ="${OfficeData[0].divisionName}"></span></p>
+        <br/>
+        <p>
+            Memo No. <strong th:text="${DraftTenderNotice.memoNumber +2}"></strong>         Date: <strong th:text="${#dates.format(#dates.createNow(), 'dd-MM-yyyy')}"></strong> </p>
+        <p>
+            Copy submitted to the Superintendent, Government Press, Madhupatna (Odisha), Cuttack with request to publish
+            this Notice in the next issue of the Odisha Gazette.
+        </p>
+        <p style="margin-right: 54px !important;text-align: right;justify-items: center;"><span th:text="${OfficeData[0].designationName}"></span><span th:text ="${OfficeData[0].divisionName}"></span></p>
+        <br/>
+        <p>
+            Memo No. <strong th:text="${DraftTenderNotice.memoNumber +3}"></strong>         Date: <strong th:text="${#dates.format(#dates.createNow(), 'dd-MM-yyyy')}"></strong> </p>
+        <p>
+            Copy to the Deputy Secretary to Government of Odisha Department of Water Resources, Bhubaneswar for
+            information.
+        </p>
+        <p style="margin-right: 54px !important;text-align: right;justify-items: center;"><span th:text="${OfficeData[0].designationName}"></span><span th:text ="${OfficeData[0].divisionName}"></span></p>
+        <br/>
+        <!--    <p>-->
+        <!--        Memo No. <strong>14</strong>-->
+        <!--        Date: <strong>06-08-2022</strong>-->
+        <!--        Copy submitted to the Chief Engineer, Monitoring and Evaluation, Water Resources, Odisha, Secha Sadan,-->
+        <!--        Bhubaneswar for information with a request to arrange for publication of the IFB Notice in the DoWR, Odisha-->
+        <!--        website on or before <strong>Dt:23-02-2019</strong>-->
+        <!--    </p>-->
+        <!--    <p style="margin-left: 810px;">Project Director, OCTDMS</p>-->
+        <!--    <p>-->
+        <!--        Memo No. <strong>15</strong>-->
+        <!--        Date:<strong>06-08-2022</strong>-->
+        <!--        Copy forwarded to the PS to Principal Secretary to Govt, DoWR for kind information of the Principal-->
+        <!--        Secretary, DoWR/ PS to Principal Secretary to Govt. AandFE for kind information of the Principal Secretary,-->
+        <!--        AandFE/ PS to Commissioner-cum-Secretary to Govt. FandARD for kind information of the-->
+        <!--        Commissioner-cum-Secretary to Govt, FandARD.-->
+        <!--    </p>-->
+        <!--    <p style="margin-left: 810px;">Project Director, OCTDMS</p>-->
+        <p>
+            Memo No. <strong th:text="${DraftTenderNotice.memoNumber +4}"></strong>          Date: <strong th:text="${#dates.format(#dates.createNow(), 'dd-MM-yyyy')}"></strong></p>
+        <p>
+            Copy to the Revenue Divisional Commissioner, Southern Division, Berhampur/ Central Division,
+            Cuttack/Northern Division, Sambalpur for favour of information.
+        </p>
+        <p style="margin-right: 54px !important;text-align: right;justify-items: center;"><span th:text="${OfficeData[0].designationName}"></span><span th:text ="${OfficeData[0].divisionName}"></span></p>
+        <br/>
+        <p>
+            Memo No. <strong th:text="${DraftTenderNotice.memoNumber +5}"></strong>          Date: <strong th:text="${#dates.format(#dates.createNow(), 'dd-MM-yyyy')}"></strong></p>
+        <p>
+            Copy to the Engineer-In-Chief, Water Resources Department, Odisha, Bhubaneswar/ Chief Engineer,
+            Minor Irrigation, Odisha, Bhubaneswar /Chief Engineer and Basin Manager, RVN Basin, Berhampur/ Tel Basin,
+            Bhabanipatna/Subarnarekha and Budhabalang Basin, Baripada/Baltarani Basin, Keonjhar for favour of kind
+            information.
+        </p>
+        <p style="margin-right: 54px !important;text-align: right;justify-items: center;"><span th:text="${OfficeData[0].designationName}"></span><span th:text ="${OfficeData[0].divisionName}"></span></p>
+        <br/>
+        <p>
+            Memo No. <strong th:text="${DraftTenderNotice.memoNumber +6}"></strong>         Date: <strong th:text="${#dates.format(#dates.createNow(), 'dd-MM-yyyy')}"></strong></p>
+        <p>
+            Copy to the Collectors and District Magistrate, Bolangir/  Kalahandi/  Nuapada/  Subarnapur/  Nabrangour/  Ganjam/
+            Gajapati/  Boudh/  Kandhamal/  Bargarh/  Jajpur/  Mayurbhanj/
+            Balasore/  Bhadrakh and Keonjhar for kind information.
+        </p>
+        <p style="margin-right: 54px !important;text-align: right;justify-items: center;"><span th:text="${OfficeData[0].designationName}"></span> <span th:text ="${OfficeData[0].divisionName}"></span></p>
+        <br/>
+   <!--     <p>
+            Memo No. <strong th:text="${DraftTenderNotice.memoNumber +7}"></strong>         Date: <strong th:text="${#dates.format(#dates.createNow(), 'dd-MM-yyyy')}"></strong></p>
+        <p>
+            Copy to All Superintending Engineers, under Minor Irrigation Division for information.
+        </p>
+        <p style="margin-right: 54px !important;text-align: right;justify-items: center;"><span th:text="${OfficeData[0].designationName}"></span><span th:text ="${OfficeData[0].divisionName}"></span></p>-->
+        <br/>
+        <p>
+            Memo No. <strong th:text="${DraftTenderNotice.memoNumber +7}"></strong>         Date: <strong th:text="${#dates.format(#dates.createNow(), 'dd-MM-yyyy')}"></strong></p>
+        <p>
+            Copy forwarded to the Superintending Engineer, Minor Irrigation Division, Bolangir/  Kalahandi/
+            Khariar/  Sonepur/  Nabrangpur/  Bhanjanagar/  Ganjar-I/  Ganjam-II/  Gajapati/  Boudh/  Kandhamal/  Padampur/  Jajpur/
+            Mayurbhanj/  Jashipur/  Balasore/  Anandpur and Keonjhar for information and necessary action for wide
+            circulation.
+        </p>
+        <p style="margin-right: 54px !important;text-align: right;justify-items: center;"><span th:text="${OfficeData[0].designationName}"></span><span th:text ="${OfficeData[0].divisionName}"></span></p>
+        <br/>
+        <p>
+            Memo No. <strong th:text="${DraftTenderNotice.memoNumber +8}"></strong>         Date: <strong th:text="${#dates.format(#dates.createNow(), 'dd-MM-yyyy')}"></strong></p>
+        <p>
+            Copy to All Sub-Divisional officer under the MI-Division, Concerned File.
+        </p>
+        <p style="margin-right: 54px !important;text-align: right;justify-items: center;"><span th:text="${OfficeData[0].designationName}"></span><span th:text ="${OfficeData[0].divisionName}"></span></p>
+        <br/>
+        <p>
+            Memo No. <strong th:text="${DraftTenderNotice.memoNumber +9}"></strong>         Date: <strong th:text="${#dates.format(#dates.createNow(), 'dd-MM-yyyy')}"></strong></p>
+        <p>
+            Copy to Divisional Notice Board for wide circulation.
+        </p>
+        <p style="margin-right: 54px !important;text-align: right;justify-items: center;"><span th:text="${OfficeData[0].designationName}"></span><span th:text ="${OfficeData[0].divisionName}"></span></p>
+
+    </div>
+</div>
+</body>
+</html>

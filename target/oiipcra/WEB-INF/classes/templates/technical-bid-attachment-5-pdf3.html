@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" >
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+    <style>
+           .container {
+                    padding-top: 22px;
+                     width: 1000px;
+                      width: auto;
+                      margin-right: auto;
+            margin-left: auto;
+            *zoom: 1;
+                }
+                .container:before,
+        .container:after {
+            display: table;
+            line-height: 0;
+            content: ""
+        }
+
+        .container:after {
+            clear: both
+        }
+
+p{
+font-size:14px;
+}
+
+@page { size: A4 landscape;}
+  div{page-break-inside:avoid}
+
+ @page {
+  @bottom-right {
+    content: "Page " counter(page) " of " counter(pages);
+  }
+}
+
+.table2 thead th {
+    padding: 8px;
+    line-height: 20px;
+    text-align: center;
+    vertical-align: top;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.table2 tbody tr:nth-child(odd) {
+      background-color: #ebf3fc;
+}
+
+.table2{
+     border-collapse: collapse;
+
+}
+
+.table1,.table1 thead th,
+.table1 tbody td {
+    padding: 8px;
+    line-height: 20px;
+    text-align: left;
+    vertical-align: top;
+    border-collapse: collapse;
+}
+
+div.footer {
+    display: block;
+
+    position: running(footer);
+}
+
+@page {
+   @bottom-left {
+        content:  element(footer);
+    }
+  }
+</style>
+</head>
+<body style="font-family:sans-serif;">
+
+<div style="" class='footer'>
+    <div class="about-border"></div>
+
+    <p style="margin-top: 2px;"><i>Technical Bid Evaluation Report</i></p>
+
+</div>
+
+<div class="container" >
+
+    <div class="outset" style="text-align: right; background-color: #50a8d4; width: 100%"><strong>Attachment-5</strong></div>
+
+
+    <div>
+        <table class="table1" style="width: 100%">
+            <tr>
+                <th>Bid Id</th>
+                <th>: <strong  th:text="${technicalBidAttachment[0].bidIdentification}"></strong></th>
+            </tr>
+            <tr>
+                <th>Name of Work</th>
+                <th>: <strong  th:text="${technicalBidAttachment[0].nameOfWork}"></strong></th>
+                <th>Scheme of funding</th>
+                <th>: <strong  th:text="${technicalBidAttachment[0].schemeOfFunding}"></strong></th>
+            </tr>
+            <tr>
+                <th>Name of District</th>
+                <th>: <strong  th:text="${technicalBidAttachment[0].districtName}"></strong></th>
+                <th>Estimated amount put to tender</th>
+                <th>: <img src="../pdf-resources/images/rupee.png" width="8px"/> <strong  th:text="${technicalBidAttachment[0].charTenderAmount}"></strong></th>
+            </tr>
+            <tr>
+                <th>Work_ID</th>
+                <th>: <strong  th:text="${technicalBidAttachment[0].workId}"></strong></th>
+                <th>Paper Cost Specified</th>
+                <th>: <img src="../pdf-resources/images/rupee.png" width="8px"/> <strong  th:text="${technicalBidAttachment[0].paperCostSpecified}"></strong></th>
+            </tr>
+            <tr>
+                <th>Work Sl No in TCN</th>
+                <th>: <strong  th:text="${technicalBidAttachment[0].workSlNoInTcn}"></strong></th>
+                <th>EMD to be deposited</th>
+                <th>: <img src="../pdf-resources/images/rupee.png" width="8px"/> <strong  th:text="${technicalBidAttachment[0].emdToBeDeposited}"></strong></th>
+            </tr>
+            <tr>
+                <th>Date of opening of tender</th>
+                <th>: <strong  th:text="${technicalBidAttachment[0].charTenderOpeningDate}"></strong></th>
+                <th>Time for Completion</th>
+                <th>: <strong  th:text="${technicalBidAttachment[0].timeForCompletion} +' Days.'"></strong></th>
+            </tr>
+        </table>
+    </div>
+
+    <br/>
+
+    <table class="table2 table-striped" style="width:100%;">
+        <thead>
+        <tr>
+            <th>Sl No.</th>
+            <th style="width:20%">Name of Bidder</th>
+            <th>Form of Bid Security Submitted</th>
+            <th>Whether Cost of Bidding Document</th>
+            <th>Bid Security Amount Deposited and Validity</th>
+            <th>Affidavit for correctness of Information</th>
+            <th>Whether Authority for signing nid enclosed</th>
+            <th>Expiration Date of Bid</th>
+            <th>Part I Bid submitted as per specified</th>
+            <th>Additional comment, if any</th>
+        </tr>
+        </thead>
+        <!--        class="table table-striped; width: 100%;" style="background-color: #d5d9db; color: white;"-->
+        <tbody>
+        <tr class="mainTableTr" th:each="data,iterator : ${technicalBidAttachment}">
+            <td th:text="${iterator.index+1}" ></td>
+            <td style="text-align: left" th:text = "${data.agency}"></td>
+            <td style="text-align: left" th:text = "${data.bidSecuritySubmitted}"></td>
+            <td>Free of Cost</td>
+            <td style="text-align: center"><img src="../pdf-resources/images/rupee.png" width="8px"/><span th:text = "${data.emdToBeDeposited}"></span></td>
+            <td style="text-align: left" th:text = "${data.affidavitValidity}"></td>
+            <td style="text-align: left" th:text = "${data.affidavitValidity}"></td>
+            <td style="text-align: center" th:text = "${bidOpening}"></td>
+            <td style="text-align: left" th:text = "${data.eSignedBid}"></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+    <hr/>
+    <table>
+        <tr>
+            <td>Total Participants in the Work : <strong th:text="${record}"></strong><span style="font-family:sans-serif; margin-left:8%"></span></td>
+        </tr>
+    </table>
+    <hr style="float: right; width: 25%"/>
+    <h4 style="padding-left: 80%"><strong> Asst. Executive Engineer </strong></h4>
+
+    <!--    <p style="float: left;" class="bottom"><i>Technical Bid Evaluation Report</i></p>-->
+    <!--    <p class="test" style="margin-left:50%"><i>Technical Bid Evaluation Report</i>-->
+</div>
+
+</body>
+</html>

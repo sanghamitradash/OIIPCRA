@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+    <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css"/>-->
+    <!--  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"/>-->
+    <!--  <link rel="stylesheet" th:href="@{../pdf-resources/css/bootstrap2.css}"/>-->
+
+    <style>
+        .container {
+
+             width: 760px;
+
+              margin-right: auto;
+    margin-left: auto;
+    *zoom: 1;
+        }
+        .container:before,
+.container:after {
+    display: table;
+    line-height: 0;
+    content: ""
+}
+
+.container:after {
+    clear: both
+}
+p{
+font-size:14px;
+}
+
+<!-- @page {-->
+<!--  @bottom-right {-->
+<!--    content: "Page " counter(page) " of " counter(pages);-->
+<!--  }-->
+<!--}-->
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+<div class="container"><!-- th:each="data,iterator : ${DraftLetterAward}"-->
+    <div class="row">
+        <table width="100%" style="border-style: none;">
+            <tr>
+                <td style="text-align:left;border-style: none;"><img src="../pdf-resources/images/logo.png"/></td>
+                <td style="text-align:center;border-style: none;">
+                    <strong> GOVERNMENT OF ODISHA</strong> <br/>
+                    <strong  th:text="${OfficeData[0].officeName}"></strong> <br/>
+                    <strong> <span  th:text="${OfficeData[0].spuAddress}"></span> <span th:text="${OfficeData[0].spuPost}"></span>. <span th:text="${OfficeData[0].spuPinNo}"></span></strong> <br/>
+                    Ph:<span th:text="${OfficeData[0].landLineNo}"></span>,E-mail:<span th:text="${OfficeData[0].spuEmail}" ></span> <br/>
+
+
+                </td>
+                <td style="text-align:right;border-style: none;"><img src="../pdf-resources/images/govtp-logo.png"/>
+                </td>
+            </tr>
+        </table>
+<!--        <div style=" display: flex; justify-content: space-around;">-->
+<!--            <img  src="../pdf-resources/images/govtp-logo.png"  class="img-rounded logo" />-->
+
+
+<!--            <img  src="../pdf-resources/images/logo-text.png" style="margin-left:34px" class="img-rounded logo" />-->
+
+
+<!--            <img  src="../pdf-resources/images/logo.png" style="margin-left:40px" class="img-rounded logo" />-->
+
+<!--        </div>-->
+    </div>
+    <strong style="font-family:sans-serif; margin-left:31%;margin-top:0"  >(WORLD BANK PROJECT ID: P163533)</strong>
+    <br/>
+    <span style="margin-left:32%;"> Ph:<span th:text="${OfficeData[0].landLineNo}"></span>; &nbsp; E-Mail:<span th:text="${OfficeData[0].spuEmail}" ></span></span> <br/>
+    <p style="margin-left:32%;margin-top:0"> No. &nbsp; <b><span th:text =${NoticeIssueNo} > </span> </b>  Date. &nbsp;  <b><strong th:text = ${userDate}> </strong></b>    </p>
+    <div  class="container">
+
+
+        <p>From</p>
+
+        <p style="margin-left:40px"> <strong>Ms Madhusmita Sahoo, IAS</strong>  <br/> Project Director, OCTDMS</p>
+        <p>To</p>
+        <p  style="margin-left:40px"> <strong> <span th:text = "${data.agencyName}"> </span>, &nbsp; <span th:text = "${data.licenseClass}"> </span>  </strong> <br/> <span> AT:<span th:text =${data.address}></span>,&nbsp;Po: <span  th:text =${data.post}></span>  </span> <br/> <span> District: .<span  th:text =${data.districtName} ></span> <span></span>&nbsp;PIN: <span th:text =${data.pinCode} ></span> </span></p>
+
+<!--        <p><strong>Sub:</strong>-->
+<!--            <span style="margin-left:40px;word-wrap: break-word;  text-align: justify;">Letter of Acceptance-cum-Notice to Proceed with the Work for <strong><span th:text = "${data.workId}"> </span> <span th:text = "${data.nameOfWork}"> </span>-->
+<!--            <span th:text = "${data.projectName}"> </span> </strong> <span>District under the Scheme </span> <strong><span th:text = "${data.projectName}" ></span></strong>. </span></p>-->
+
+        <p><strong>Sub: &nbsp;</strong>
+        <span>Letter of Acceptance-cum-Notice to Proceed with the Work for <strong><span th:text = "${data.workId}"> </span> <span th:text = "${data.nameOfWork}"> </span>
+            <span th:text = "${data.projectName}"> </span> </strong> <span>District under the Scheme </span> <strong><span th:text = "${data.projectName}" ></span></strong>. </span></p>
+
+        <p>
+        <span><strong>Ref: &nbsp;</strong>
+        <span> This office tender vide Bid ID: <strong><span th:text = "${data.bidId}" > </span></strong>  <span></span> opened on Dt: <strong><span th:text = "${#dates.format(data.tenderOpeningDate, 'dd-MMM-yyyy')}"> </span></strong>  <span> </span> and Financial Bid
+            opened on Dt: <strong> <span th:text = "${#dates.format(data.financialBidOpeningDate, 'dd-MMM-yyyy')}" > </span></strong> .</span></span></p>
+
+        <p>Dear Sir,</p>
+        <p style=" text-align: justify;word-wrap: break-word;"> &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;As per the out come of the Financial Bid Opening for the work referred above, your bid was
+            declared as <strong> <span th:text = "${data.bidPosition}" ></span> </strong> <span></span>1st Lowest and considered to be awarded in your favour. In this regard, you are requested
+            to attend the office of the <strong>Executive Engineer, Minor Irrigation Division, <span th:text = "${data.division}"></span></strong>  <span> </span> for execution of the
+            Agreement by producing the documents/ credentials in original for verification and depositing the
+            amount of <strong>"Additional Performance Security (APS)"</strong>  for the less bid amount and <strong> "Initial Security
+                Deposit (ISD)"</strong> indicated as under <strong>within 15 (Fifteen) days</strong>  of receipt of this intimation.</p>
+         <p> <span >Amount put to tender:&nbsp; &nbsp;<span> <strong>₹</strong><strong th:text = "${data.tenderAmount}"> </strong></span></span> <span style="float:right">Rate Quoted:&nbsp; &nbsp;<span><strong>₹</strong><strong  th:text = "${data.amountQuoted}" ></strong></span></span></p>
+        <p> <span >APS to be deposited:&nbsp; &nbsp;<span><strong>₹</strong><strong th:text = "${data.emdAmount}" ></strong></span></span> <span style="float:right">ISD to be deposited @2.5%:&nbsp; &nbsp;<strong>₹</strong><span><strong th:text = "${data.isdToBeDeposited}" ></strong></span></span></p>
+
+        <p style=" text-align: justify;word-wrap: break-word;"> &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;You are requested to sign the Contract agreement and proceed with the work by <strong>Dt: 29-09-2022(demo)</strong>
+            under the instructions of the Engineer-in-Charge intimated herewith. You are also requested to submit a
+            <strong> "Fortnightly Work Programme"</strong> at the time of signing the contract and ensure completion of the work
+            within the contract period of <strong>15 Days </strong> i.e. by Dt: 14-10-2022.(+15)</p>
+        <p style=" text-align: justify;word-wrap: break-word;"> &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; The date of Tender Validity to sign the Contract agreement expires on Dt: <strong>27-06-2019. (demo)</strong> With the
+            issuance of this acceptance letter and your furnishing the Performance Security, the contract for the
+            above said work stands concluded.</p>
+        <div style="float:left;  width:49%;  display:inline-block;">
+            <p style="text-align: center;"> <span >Amount put to tender:<span><strong> <span th:text = "${data.ee}"  ></span> <span>,&nbsp;EE</span> </strong></span></span></p>
+            <p style="text-align: center;"> <span >Amount put to tender:<span><strong  th:text = "${data.division}" ></strong></span></span></p>
+
+
+        </div>
+        <div style="  width:49%;float:left;">
+            <div style="text-align: center;">
+                <p>Yours Faithfully,</p>
+<!--                <br/>-->
+                <p>Mr Rashmi Ranjan Nayak, OAS</p>
+                <p>Project Director, OCTDMS</p>
+            </div>
+
+        </div>
+
+        <p>Memo No. 2(demo) &nbsp; &nbsp;&nbsp;&nbsp; <span> Date: <b><span th:text = ${userDate}> </span></b> </span></p>
+
+        <p style=" text-align: justify;word-wrap: break-word;"> &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; Copy to the Superintending Engineer, EMI Circle, Keonjhar/ Executive Engineer, Minor Irrigation
+            Division, Balasore for information and necessary action.</p>
+<p style="float:right">Project Director, OCTDMS</p>
+
+
+
+
+
+
+    </div>
+
+
+
+</div>
+</body>
+</html>

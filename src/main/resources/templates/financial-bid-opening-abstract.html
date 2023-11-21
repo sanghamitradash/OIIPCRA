@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+
+    <style>
+      @page {
+    size: A4 landscape;
+    }
+
+        .container {
+            padding-top: 30px;
+             width: 1000px;
+              width: auto;
+              margin-right: auto;
+    margin-left: auto;
+    *zoom: 1;
+        }
+        .container:before,
+.container:after {
+    display: table;
+    line-height: 0;
+    content: ""
+}
+
+.container:after {
+    clear: both
+}
+
+
+
+tr:nth-child(even) {
+<!--  background-color: #f2f2f2;-->
+ background-color: #ebf3fc;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 20px
+}
+
+.table th,
+.table td {
+    padding: 8px;
+    line-height: 20px;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid #ddd
+     border: 1px solid black;
+}
+
+@page {
+  @bottom-right {
+    content: "Page " counter(page) " of " counter(pages);
+  }
+}
+<!--@page {-->
+<!--  @bottom-left  {-->
+
+<!--    content: date("dd.MM.yyyy HH.mm");-->
+<!--  }-->
+
+<!--}-->
+.landscapePage
+{
+height: 14cm;
+ width: 27cm
+
+}
+div.footer {
+    display: block;
+
+    position: running(footer);
+}
+@page {
+   @bottom-left {
+        content:  element(footer);
+    }
+  }
+
+
+    </style>
+</head>
+<body>
+<div class="landscapePage">
+    <div style="" class='footer'>
+        <div class="about-border"></div>
+
+        <p style="margin-top: 2px;" th:text="${#dates.format(standardDate, 'dd MMM yyyy')}"></p>
+
+    </div>
+
+
+
+<!--    <table width="100%" style="border-style: none;">-->
+<!--        <tr>-->
+<!--            <td style="text-align:left;border-style: none;"><img style="    margin-right: -26px" src="../pdf-resources/images/logo.png"/></td>-->
+<!--            <td style="text-align:center;border-style: none;background-color:DodgerBlue;">-->
+<!--                <h3><span class="box" ><strong>Abstract of Financial Bid Opening of Civil Works Tender - OIIPCRA</strong></span></h3> <br/>-->
+<!--                <h6>-->
+<!--                    <span  th:text="${bidId}" class="nowrap"></span>  &nbsp; &nbsp; &nbsp;-->
+<!--                    <span class="nowrap">Date of Financial Bid Opening:</span>-->
+<!--                    <span  th:text="${#dates.format(tenderOpeningDate, 'dd-MMM-yyyy')}" class="nowrap"></span>-->
+<!--                </h6>-->
+<!--            </td>-->
+
+<!--        </tr>-->
+<!--    </table>-->
+
+    <div id="header" class="header" >
+        <h2 style="text-align : center; font-family:sans-serif;text-size:15px; "><strong>Abstract of Financial Bid Opening of Civil Works Tender - OIIPCRA </strong></h2>
+        <h3><span class="test" style="margin-left:20%; color:blue; font-family:sans-serif;"><strong th:text="${bidId}"></strong></span>         <span class="test" style="margin-left:2% ; color:blue; font-family:sans-serif;"> Date of Financial Bid Opening: <strong th:text="${#dates.format(tenderOpeningDate, 'dd-MMM-yyyy')}"></strong></span></h3>
+
+    </div>
+    <div>
+        <table class="table table-striped" style="width:100%;">
+            <thead style="background-color: #457ca3; color: white;" >
+
+            <tr>
+                <th >Sl.</th>
+                <th >Work Id</th>
+                <th >Agency</th>
+                <th >Contractor Class</th>
+                <th >Estd Cost(INR)</th>
+                <th >Bid Price(INR)</th>
+                <th >Quoted %</th>
+                <th >APS amount(INR)</th>
+                <th >Award Type</th>
+                <th >LOA Issue</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="data,iterator : ${FinancialData}">
+
+                <td th:text="${iterator.index+1}" ></td>
+                <td th:text = "${data.workId}"></td>
+                <td th:text = "${data.agency}"></td>
+                <td th:text = "${data.licenseClass}"></td>
+                <td><img src="../pdf-resources/images/rupee.png" width="8px"/><span th:text = "${data.tenderAmountString}"></span></td>
+                <td><img src="../pdf-resources/images/rupee.png" width="8px"/><span th:text = "${data.bidP}"></span></td>
+                <td><span th:text = "${data.rateExcessLess}"></span><img src="../pdf-resources/images/per-icon.png"  width="8px"/></td>
+                <td><img src="../pdf-resources/images/rupee.png" width="8px"/><span th:text = "${data.bar}"></span></td>
+                <td th:text = "${data.awardType}"></td>
+                <td th:text = "${data.loaIssue}"></td>
+            </tr>
+                <td colspan="4"><strong>Summary for Tender:</strong> (<strong th:text="${FinancialData.size}"> </strong> detail records ) <strong>Total Cost of Works:</strong></td>
+                <td style="width:15%"> <strong><img src="../pdf-resources/images/rupee.png" width="8px"/><span th:text="${sumEstdCost}"></span></strong></td>
+                <td style="width:15%"> <strong><img src="../pdf-resources/images/rupee.png" width="8px"/><span th:text="${sumBidPrice}"></span></strong></td>
+            </tbody>
+        </table>
+
+        <p style="float: right; margin-right: 116px;"><span th:text = "${OfficeData[0].designationName}"></span><span th:text = "${DivName}"></span></p>
+    <!--    <hr  style=" border: 1px solid black;"/>
+        <p><strong>Summary for Tender:</strong> (<strong th:text="${FinancialData.size}"> </strong>detail records )         <span class="test" style="margin-left:1%"><strong>Total Cost of Works:</strong> <strong th:text="${sumEstdCost}"></strong>         <strong th:text="${sumBidPrice}"></strong></span></p>
+        <hr style=" border: 1px solid black;"/>
+
+
+        <p style="float: right;">Executive Engineer,&nbsp;Mon,&nbsp;OIIPCRA</p>
+        <br/>
+        <p th:text="${#dates.format(standardDate, 'dd MMM yyyy')}"></p>-->
+    </div>
+
+
+</div>
+
+</body>
+</html>
